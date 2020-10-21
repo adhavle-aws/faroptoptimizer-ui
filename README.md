@@ -3,7 +3,7 @@
 
 This package sets up a React development environment for FarOpt. FarOpt is a service that provides a cloud based platform to run Numerical Optimization on AWS at Scale.
 
-Built on Bob Ross UI, see [Bob Ross in the AWS Design System](https://polaris.a2z.com/resources/bob_ross/).
+_Built on Bob Ross UI, see [Bob Ross in the AWS Design System](https://polaris.a2z.com/resources/bob_ross/)._
 
 ## Brunch + React + Babel/ES6
 
