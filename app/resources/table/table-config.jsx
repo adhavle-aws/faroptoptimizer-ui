@@ -3,82 +3,41 @@ const { Icon } = window['AWS-UI-Components-React'];
 export const COLUMN_DEFINITIONS = [
   {
     id: 'id',
-    header: () => 'Distribution ID',
+    header: () => 'Reciepe ID',
     cell: item => (
       <div>
         <a href={`javascript:void(0)`}>{item.id}</a>
       </div>
     ),
-    minWidth: '180px',
     allowLineWrap: true
   },
   {
-    id: 'domainName',
-    cell: item => item.domainName,
-    header: () => 'Domain name',
-    minWidth: '160px',
-    allowLineWrap: true
-  },
-  {
-    id: 'deliveryMethod',
-    header: () => 'Delivery method',
-    cell: item => item.deliveryMethod,
+    id: 'contributor',
+    header: () => 'Contributor',
+    cell: item => item.contributor,
     minWidth: '100px',
     allowLineWrap: true
   },
   {
-    id: 'priceClass',
-    header: () => 'Price class',
-    cell: item => item.priceClass,
+    id: 'domain',
+    header: () => 'Domain',
+    cell: item => item.domain,
     minWidth: '100px',
     allowLineWrap: true
   },
   {
-    id: 'sslCertificate',
-    header: () => 'SSL certificate',
-    cell: item => item.sslCertificate,
+    id: 'description',
+    header: () => 'description',
+    cell: item => item.description,
     minWidth: '100px',
     allowLineWrap: true
   },
-  {
-    id: 'origin',
-    header: () => 'Origin',
-    cell: item => item.origin,
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
-    id: 'status',
-    header: () => 'Status',
-    cell: item => item.status,
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
-    id: 'state',
-    header: () => 'State',
-    cell: item => (
-      <div className={`awsui-util-status-${item.state === 'Disabled' ? 'negative' : 'positive'}`}>
-        <Icon name={item.state === 'Disabled' ? 'status-negative' : 'status-positive'} />
-        <span>{` ${item.state}`}</span>
-      </div>
-    ),
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
-    id: 'logging',
-    header: () => 'Logging',
-    cell: item => item.logging,
-    minWidth: '100px',
-    allowLineWrap: true
-  }
 ];
 
 export const SORTABLE_COLUMNS = [
   { id: 'id', field: 'id' },
-  { id: 'domainName', field: 'domainName' },
-  { id: 'deliveryMethod', field: 'deliveryMethod' },
+  { id: 'description', field: 'description' },
+  { id: 'domain', field: 'domain' },
   { id: 'priceClass', field: 'priceClass' },
   { id: 'sslCertificate', field: 'sslCertificate' },
   { id: 'origin', field: 'origin' },
@@ -92,10 +51,10 @@ export const CONTENT_SELECTOR_OPTIONS = [
     label: 'Main distribution properties',
     options: [
       { id: 'id', label: 'Distribution ID', editable: false, visible: true },
-      { id: 'domainName', label: 'Domain name', editable: true, visible: true },
+      { id: 'domain', label: 'Domain name', editable: true, visible: true },
       {
-        id: 'deliveryMethod',
-        label: 'Delivery method',
+        id: 'contributor',
+        label: 'Contributor',
         editable: true,
         visible: true
       },
@@ -106,15 +65,11 @@ export const CONTENT_SELECTOR_OPTIONS = [
         visible: false
       },
       {
-        id: 'sslCertificate',
-        label: 'SSL certificate',
+        id: 'description',
+        label: 'Description',
         editable: true,
         visible: true
-      },
-      { id: 'origin', label: 'Origin', editable: true, visible: false },
-      { id: 'status', label: 'Status', editable: true, visible: true },
-      { id: 'state', label: 'State', editable: true, visible: true },
-      { id: 'logging', label: 'Logging', editable: true, visible: false }
+      }
     ]
   }
 ];

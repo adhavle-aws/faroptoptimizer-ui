@@ -1,4 +1,4 @@
-export default class DataProvider {
+export default class  DataProvider {
   getData(name, callback) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {

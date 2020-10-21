@@ -89,7 +89,7 @@ const CustomNavigation = () => (
   <SideNavigation
     header={{ text: 'Fargate Optimizer', href: '#/' }}
     items={[
-      {
+      { 
         type: 'section',
         text: 'Components',
         expanded: true,

@@ -14,6 +14,7 @@ import Basic from './BasicLayout.jsx';
 import ServiceHomepage from './ServiceHomepage.jsx';
 import CreateForm from './CreateForm.jsx';
 import TableView from './Table.jsx';
+import Cards from './MyCards.jsx';
 
 // Class App is the "output" generated on every build,
 // it is what you will see on the webpage.
@@ -29,6 +30,7 @@ export default class App extends React.Component {
         <Route path="/service-home" component={ServiceHomepage} />
         <Route path="/create" component={CreateForm} />
         <Route path="/table" component={TableView} />
+        <Route path="/cards" component={Cards} />
       </div>
     );
   }

@@ -10,6 +10,9 @@ https://polaris.corp.amazon.com/getting_started/development/integration/
 import React from 'react';
 import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
+import FarOptNavigation from './FarOptNavigation.jsx';
+
+
 import {
   COLUMN_DEFINITIONS,
   CONTENT_SELECTOR_OPTIONS,
@@ -40,13 +43,10 @@ export default class TableView extends React.Component {
   render() {
     return (
       <AppLayout
-        navigation={<ServiceNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
-        notifications={<FlashMessage />}
+        navigation={<FarOptNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
         breadcrumbs={<Breadcrumbs />}
         content={<DetailsTable />}
         contentType="table"
-        toolsOpen={false}
-        tools={Tools}
       />
     );
   }
@@ -64,7 +64,7 @@ class DetailsTable extends React.Component {
   }
 
   componentDidMount() {
-    new DataProvider().getData('distributions', distributions => this.setState({ distributions: distributions }));
+    new DataProvider().getData('reciepes', distributions => this.setState({ distributions: distributions }));
   }
 
   // Keeps track of how many distributions are selected
@@ -154,7 +154,7 @@ const Header = ({ selectedDistributions, counter }) => {
     <div className="awsui-util-action-stripe">
       <div className="awsui-util-action-stripe-title">
         <h2>
-          Distributions&nbsp;
+          Optimizers&nbsp;
           {counter ? <span className="awsui-util-header-counter">{counter}</span> : ''}
         </h2>
       </div>
@@ -173,11 +173,11 @@ const Breadcrumbs = () => (
   <BreadcrumbGroup
     items={[
       {
-        text: 'CloudFront',
-        href: '#/service-home'
+        text: 'FarOpt',
+        href: '#/'
       },
       {
-        text: 'Distributions',
+        text: 'Reciepes',
         href: '#/table'
       }
     ]}

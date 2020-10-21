@@ -24,13 +24,12 @@ class ServiceNavigation extends React.Component {
         expanded: true,
         items: [
           { type: 'link', text: 'What is FarOpt', href: '#/' },
-          { type: 'link', text: 'Optimizer Library', href: '#/basic' },
-          { type: 'link', text: 'Create Script', href: '#/service-home' },
-          { type: 'link', text: 'Define Workflow', href: '#/create' }
+          { type: 'link', text: 'Optimizer Library', href: '#/table' },
+          { type: 'link', text: 'Create Script', href: '#/create' },
+          { type: 'link', text: 'Define Workflow', href: '#/service-home' }
         ]
       }
     ]}
-    activeHref="#/"
   />
     );
   }
