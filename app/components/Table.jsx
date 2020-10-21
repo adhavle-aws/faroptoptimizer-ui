@@ -162,7 +162,7 @@ const Header = ({ selectedDistributions, counter }) => {
         <Button text="View details" disabled={!isOnlyOneSelected} />
         <Button text="Edit" disabled={!isOnlyOneSelected} />
         <Button text="Delete" disabled={selectedDistributions.length === 0} />
-        <Button href="#/create" variant="primary" text="Create distribution" />
+        <Button href="#/create" variant="primary" text="Create Script" />
       </div>
     </div>
   );

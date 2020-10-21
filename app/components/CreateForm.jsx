@@ -47,7 +47,7 @@ const {
 export default class CreateForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: true };
+    this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
   }
   componentDidMount() {
     let dataProvider = new DataProvider();
@@ -68,7 +68,7 @@ export default class CreateForm extends React.Component {
         }
         contentType="form"
         tools={Tools[this.state.toolsIndex]}
-        toolsOpen={this.state.toolsOpen}
+        toolsOpen={false}
         navigationOpen={true}
       />
     );
@@ -79,12 +79,12 @@ export default class CreateForm extends React.Component {
 const Content = props => (
   <div>
     <Form
-      header={<h1>Create CloudFront distribution</h1>}
+      header={<h1>Create Script</h1>}
       actions={
         // located at the bottom of the form
         <div>
           <Button variant="link" text="Cancel" />
-          <Button href="#/table" variant="primary" text="Create distribution" />
+          <Button href="#/table" variant="primary" text="Create Script" />
         </div>
       }
     >

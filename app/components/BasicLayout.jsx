@@ -54,12 +54,12 @@ const Content = () => <div> Add tiles here </div>;
 const Tools = (
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
-      <h2>CloudFront</h2>
+      <h2>FarOpt</h2>
     </div>
     <ul className="awsui-list-unstyled">
       <li>
         <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html">
-          What is Amazon CloudFront?
+          What is Amazon FarOpt?
         </a>
       </li>
       <li>
@@ -69,7 +69,7 @@ const Tools = (
       </li>
       <li>
         <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-working-with.html">
-          Working with distributions
+          Working with commercial solvers
         </a>
       </li>
     </ul>
