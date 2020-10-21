@@ -1,8 +1,9 @@
-*Copyright Amazon.com, Inc.  This package is confidential and proprietary Amazon.com, Inc. software.*
 
 # Introduction
 
-This package sets up a React development environment that has access to all [AWS-UI Polaris](https://polaris.a2z.com/) React components. It comes with four templates of frequently found pages in Polaris and AWS Management Console. With minimal setup, designers can construct clickable mockups using the building blocks our design system has to offer. Bob Ross makes it easy to develop locally, running a webserver that previews your prototype and updates whenever you make and save changes. For more information and helpful tricks, see [Bob Ross in the AWS Design System](https://polaris.a2z.com/resources/bob_ross/).
+This package sets up a React development environment for FarOpt. FarOpt is a service that provides a cloud based platform to run Numerical Optimization on AWS at Scale.
+
+Built on Bob Ross UI, see [Bob Ross in the AWS Design System](https://polaris.a2z.com/resources/bob_ross/).
 
 ## Brunch + React + Babel/ES6
 
@@ -10,7 +11,7 @@ This is a modern JS skeleton with React AWS-UI components for [Brunch](http://br
 
 ## Installation
 
-Clone this repo manually `git clone ssh://git.amazon.com/pkg/BobRoss` or download it as a [.zip file on Drive](https://drive.corp.amazon.com/documents/aws-ux/Polaris/bob_ross/BobRoss.zip).
+Clone this repo manually `gh repo clone adhavle-aws/faroptoptimizer-ui`.
 
 ## Getting started
 
