@@ -66,7 +66,7 @@ const Content = () => (
       <div className="awsui-util-container">
         <div>
           <br />
-          <img src="./images/FarOpt.jpeg" className="intro-screenshot" alt="screenshot" />
+          <img src="./images/bob_ross.jpg" className="intro-screenshot" alt="screenshot" />
         </div>
       </div>
 
