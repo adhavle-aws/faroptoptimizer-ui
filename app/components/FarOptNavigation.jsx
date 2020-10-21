@@ -16,13 +16,13 @@ class ServiceNavigation extends React.Component {
   render() {
     return (
       <SideNavigation
-    header={{ text: 'Fargate Optimizer', href: '#/' }}
-    items={[
-      {
-        type: 'section',
-        text: 'Components',
-        expanded: true,
-        items: [
+        header={{ text: 'Fargate Optimizer', href: '#/' }}
+        items={[
+          {
+            type: 'section',
+            text: 'Components',
+            expanded: true,
+            items: [
           { type: 'link', text: 'What is FarOpt', href: '#/' },
           { type: 'link', text: 'Optimizer Library', href: '#/table' },
           { type: 'link', text: 'Create Script', href: '#/create' },
