@@ -12,6 +12,9 @@ import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
 
+{/* import { render } from "react-dom";
+import AceEditor from "react-ace";*/} 
+
 import {
   ALLOWED_HTTP_METHOD_OPTIONS,
   COOKIE_OPTIONS,
@@ -128,6 +131,32 @@ const Content = props => (
               stretch={true}
             >
               <Textarea placeholder={'www.example1.com\nwww.example2.com'} />
+
+              {/* Adding Ace editor
+              <AceEditor
+              placeholder="import time"
+              mode="python"
+              theme="textmate"
+              name="code"
+              onLoad={this.onLoad}
+              onChange={this.onChange}
+              fontSize={14}
+              showPrintMargin={true}
+              showGutter={true}
+              highlightActiveLine={true}
+              value={`import time
+            import ortools
+
+            print("hello world")`}
+              setOptions={{
+              enableBasicAutocompletion: true,
+              enableLiveAutocompletion: true,
+              enableSnippets: false,
+              showLineNumbers: true,
+              tabSize: 2,
+              }}/>
+         */}
+
             </FormField>
             <FormField
               label={
