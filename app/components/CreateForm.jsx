@@ -90,13 +90,13 @@ const Content = props => (
     >
       <ContentDeliveryPanel replaceToolsContent={props.replaceToolsContent} />
 
-      <FormSection header={<h2>Distribution settings</h2>} footer={<DistributionsFooter />}>
+      <FormSection header={<h2>Write script</h2>} footer={<DistributionsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <span>
-                  Price class
+                  Include packages
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
@@ -150,13 +150,13 @@ const Content = props => (
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Origin settings">
+      <FormSection header="Input Output settings">
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <div>
-                  Content origin
+                  Result output location
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
@@ -166,29 +166,29 @@ const Content = props => (
                   </a>
                 </div>
               }
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
             >
               <Select
                 options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
+                placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
                 filteringType="auto"
               />
             </FormField>
             <FormField
-              label="Content origin (multiselect version)"
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              label="Additional source code / inputs location"
+              description="The Amazon S3 bucket from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
             >
               <Multiselect
                 options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
+                placeholder="Select an Amazon S3 bucket from which you want FarOpt to get your project source code."
                 filteringType="auto"
               />
             </FormField>
             <FormField
-              label="Path to content"
-              description="The directory in your Amazon S3 bucket or your custom origin."
+              label="Path to source files"
+              description="The directory in your Amazon S3 bucket to the source code."
             >
-              <Input placeholder="/images" />
+              <Input placeholder="/path/to/src" />
             </FormField>
             <FormField
               label="Origin ID"
@@ -234,7 +234,7 @@ const Content = props => (
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Cache behavior settings" footer={<BehaviorsFooter />}>
+      <FormSection header="Additional behavior settings" footer={<BehaviorsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField label="Viewer protocol policy" stretch={true}>
@@ -284,7 +284,7 @@ class ContentDeliveryPanel extends React.Component {
         <FormField
           label={
             <div>
-              Delivery method
+              Create Script Sources
               <a
                 className="awsui-util-help-info-link"
                 href="javascript:void(0);"
@@ -437,7 +437,7 @@ const Tools = [
   </div>,
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
-      <h2>Delivery Method</h2>
+      <h2>Create Script Sources</h2>
     </div>
     <h4>Web</h4>
     <p>Create a web distribution if you want to:</p>

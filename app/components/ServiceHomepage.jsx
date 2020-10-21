@@ -52,14 +52,14 @@ const Content = () => (
 
           <div className="col-xxs-10 offset-xxs-1 col-s-4 offset-s-0 col-l-3 col-xl-2">
             <div className="awsui-util-container awsui-util-mb-n">
-              <h2>Create an Optimization node</h2>
+              <h2>Create an Optimization script</h2>
               <FormField stretch={true} label="Delivery method" className="awsui-util-d-b">
                 <Select
                   options={[{ id: '1', label: 'Use a FarOpt Blueprint' },{ id: '2', label: 'Use OR Tools' },{ id: '3', label: 'Use Pyomo' },{ id: '4', label: 'Use Gurobi' },{ id: '5', label: 'Use CPLex' }]}
                   selectedOption={{ id: '1', label: 'Use a FarOpt Blueprint' }}
                   className="awsui-util-mb-xl"
                 />
-                <Button href="#/create" variant="primary" text="Create node" />
+                <Button href="#/create" variant="primary" text="Create Script" />
               </FormField>
             </div>
           </div>
