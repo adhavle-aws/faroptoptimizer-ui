@@ -1,7 +1,8 @@
 export const PRICE_CLASS_OPTIONS = [
-  { label: 'Use all edge locations (best performance)', value: '0' },
-  { label: 'Use only US, Canada, and Europe', value: '1' },
-  { label: 'Use only US, Canada, Europe, and Asia', value: '2' }
+  { label: 'Import available open source libraries like ORTools and Pyomo', value: '0' },
+  { label: 'Use only Gurobi', value: '1' },
+  { label: 'Use only Cplex', value: '2' },
+  { label: 'Do not import any packages', value: '3' }
 ];
 
 export const SSL_CERTIFICATE_OPTIONS = [
@@ -59,13 +60,23 @@ export const CURRENT_COMPRESSION_OPTIONS = [
 
 export const DELIVERY_METHOD = [
   {
-    label: 'Web',
-    value: 'web',
-    description: 'Deliver all types of content (including streaming). This is the most common choice.'
+    label: 'Write Script',
+    value: 'script',
+    description: 'Write a script in this console'
   },
   {
-    label: 'RTMP',
-    value: 'rtmp',
-    description: 'Deliver streaming content using Adobe Media Server and the Adobe Real-Time Messaging Protocol (RTMP).'
+    label: 'Git repository',
+    value: 'git',
+    description: 'Run script from git repo (note : ... )'
+  },
+  {
+    label: 'S3',
+    value: 'S3',
+    description: 'Run script from S3'
+  },
+  {
+    label: 'Use a template',
+    value: 'template',
+    description: 'Use a FarOpt blueprint to quickly get started'
   }
 ];

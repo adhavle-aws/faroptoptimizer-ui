@@ -53,7 +53,7 @@ const Content = () => (
                 <div>Numerical Optimization on AWS</div>
               </div>
               <p>
-                Build optimization stacks with agility &amp; self service capabilities in a cost efficient manner. Leverage pre built example implentations and benefit from cloud economies of scale.  
+                Build optimization applications with agility &amp; self service capabilities in a cost efficient manner. Leverage pre-built example implentations and benefit from cloud economies of scale.  
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ const Content = () => (
       <div className="awsui-util-container">
         <div>
           <br />
-          <img src="./images/FarOpt.jpeg" className="intro-screenshot" alt="screenshot" />
+          <img src="./images/FarOpt.jpeg" className="intro-screenshot" alt="screenshot" width="100%"/>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ const Content = () => (
 
 const CustomNavigation = () => (
   <SideNavigation
-    header={{ text: 'Fargate Optimizer', href: '#/' }}
+    header={{ text: 'Amazon FarOpt', href: '#/' }}
     items={[
       { 
         type: 'section',

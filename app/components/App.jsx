@@ -25,9 +25,9 @@ export default class App extends React.Component {
       // as a new 'Route' so you can link to it with a url.
 
       <div>
-        <Route exact path="/" component={Landing} />
+        <Route exact path="/" component={ServiceHomepage} />
         <Route path="/basic" component={Basic} />
-        <Route path="/service-home" component={ServiceHomepage} />
+        <Route path="/service-home" component={Landing} />
         <Route path="/create" component={CreateForm} />
         <Route path="/table" component={TableView} />
         <Route path="/cards" component={Cards} />
