@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-faroptoptimizer-dev-224249-authRole",
+            "UnauthRoleArn": "arn:aws:iam::142396614969:role/amplify-faroptoptimizer-dev-224249-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::142396614969:role/amplify-faroptoptimizer-dev-224249-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-faroptoptimizer-dev-224249-deployment",
+            "UnauthRoleName": "amplify-faroptoptimizer-dev-224249-unauthRole",
+            "StackName": "amplify-faroptoptimizer-dev-224249",
+            "StackId": "arn:aws:cloudformation:us-east-1:142396614969:stack/amplify-faroptoptimizer-dev-224249/1e7964d0-1347-11eb-af35-1277ff2044b7",
+            "AmplifyAppId": "d3qd0yobu1hicy"
+        }
+    }
+}
