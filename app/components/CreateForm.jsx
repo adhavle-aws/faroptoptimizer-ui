@@ -12,9 +12,6 @@ import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
 
-{/* import { render } from "react-dom";
-import AceEditor from "react-ace";*/} 
-
 import {
   ALLOWED_HTTP_METHOD_OPTIONS,
   COOKIE_OPTIONS,
@@ -78,6 +75,11 @@ export default class CreateForm extends React.Component {
   }
 }
 
+function handleClick(e){
+  e.preventDefault();    
+  console.log('The link was clicked.'); 
+}
+
 // The content in the main content area of the App layout
 const Content = props => (
   <div>
@@ -116,7 +118,7 @@ const Content = props => (
             <FormField
               label={
                 <span>
-                  Alternative domain names (CNAMEs)<i> - optional</i>
+                  Script 
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
@@ -126,60 +128,15 @@ const Content = props => (
                   </a>
                 </span>
               }
-              description="You must list any custom domain names that you use in addition to the CloudFront domain name for the URLs for your files."
-              hintText="Specify up to 100 CNAMEs separated with commas or put each on a new line."
               stretch={true}
-            >
-              <Textarea placeholder={'www.example1.com\nwww.example2.com'} />
-
-              {/* Adding Ace editor
-              <AceEditor
-              placeholder="import time"
-              mode="python"
-              theme="textmate"
-              name="code"
-              onLoad={this.onLoad}
-              onChange={this.onChange}
-              fontSize={14}
-              showPrintMargin={true}
-              showGutter={true}
-              highlightActiveLine={true}
-              value={`import time
-            import ortools
-
-            print("hello world")`}
-              setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: false,
-              showLineNumbers: true,
-              tabSize: 2,
-              }}/>
-         */}
-
-            </FormField>
-            <FormField
-              label={
-                <span>
-                  SSL/TLS certificate
-                  <a
-                    className="awsui-util-help-info-link"
-                    href="javascript:void(0);"
-                    onClick={() => props.replaceToolsContent(4)}
-                  >
-                    Info
-                  </a>
-                </span>
-              }
-              stretch={true}
-            >
-              <RadioGroup items={SSL_CERTIFICATE_OPTIONS} value="default" />
-            </FormField>
-            <Button text="Request or import a certificate with AWS Certificate Manager (ACM)" />
+            >             
+              <iframe id="cheapHack" src="https://ace.c9.io/build/kitchen-sink.html"  width="100%" height="580px;" frameborder="0"></iframe>
+           </FormField>
+            <Button text="Save script to library" onClick={handleClick}/>
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Input Output settings">
+      <FormSection header="Load existing script">
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
@@ -260,39 +217,6 @@ const Content = props => (
                 }
               ]}
             />
-          </div>
-        </ColumnLayout>
-      </FormSection>
-      <FormSection header="Additional behavior settings" footer={<BehaviorsFooter />}>
-        <ColumnLayout>
-          <div data-awsui-column-layout-root={true}>
-            <FormField label="Viewer protocol policy" stretch={true}>
-              <RadioGroup items={VIEWER_PROTOCOL_POLICY_OPTIONS} value="0" />
-            </FormField>
-            <FormField label="Allowed HTTP methods" stretch={true}>
-              <RadioGroup items={ALLOWED_HTTP_METHOD_OPTIONS} value="0" />
-            </FormField>
-            <FormField label="Forward headers" description="Cache your objects based on header values" stretch={true}>
-              <RadioGroup items={FORWARD_HEADER_OPTIONS} value="none" />
-            </FormField>
-            <FormField label="Object caching" description="Cache your objects based on header values">
-              <ColumnLayout columns={4}>
-                <div data-awsui-column-layout-root={true}>
-                  <FormField label="Minimum TTL">
-                    <Input type="number" value="0" />
-                  </FormField>
-                  <FormField label="Maximum TTL">
-                    <Input type="number" value="31536000" />
-                  </FormField>
-                  <FormField label="Default TTL">
-                    <Input type="number" value="86400" />
-                  </FormField>
-                  <div className="custom-header">
-                    <Button text="Set to default" />
-                  </div>
-                </div>
-              </ColumnLayout>
-            </FormField>
           </div>
         </ColumnLayout>
       </FormSection>
