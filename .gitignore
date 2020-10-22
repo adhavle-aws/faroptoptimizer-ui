@@ -13,3 +13,6 @@ app/assets/.DS_Store
 app/assets/third-party/.DS_Store
 node_modules/
 public/
+package-lock.json
+~origin_shreyas
+package-lock.json~origin_shreyas
