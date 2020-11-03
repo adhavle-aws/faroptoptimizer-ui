@@ -404,10 +404,10 @@ class ContentDeliveryPanel extends React.Component {
                   Solver
                 </div>
                 <div class="card-body">
-                  <awsui-radio-button initialized="true" onChange={this.onChangeValue}>
+                  <awsui-radio-button initialized="true" >
                     <div class="awsui-radio-button">
                         <div class="awsui-radio-button-label">
-                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                                 <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
@@ -430,10 +430,10 @@ class ContentDeliveryPanel extends React.Component {
               <div class="card mb-4 bg-info text-white">
                 <div class="card-header">Solver</div>
                 <div class="card-body">
-                <awsui-radio-button initialized="true" onChange={this.onChangeValue}>
+                <awsui-radio-button initialized="true">
                     <div class="awsui-radio-button">
                         <div class="awsui-radio-button-label">
-                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                                 <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
