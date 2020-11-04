@@ -6,7 +6,7 @@ export const COLUMN_DEFINITIONS = [
     header: () => 'Reciepe ID',
     cell: item => (
       <div>
-        <a href={`javascript:void(0)`}>{item.id}</a>
+        <a href={`#/cards`}>{item.id}</a>
       </div>
     ),
     allowLineWrap: true

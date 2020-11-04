@@ -159,7 +159,7 @@ const Header = ({ selectedDistributions, counter }) => {
         </h2>
       </div>
       <div className="awsui-util-action-stripe-group">
-        <Button text="View details" disabled={!isOnlyOneSelected} />
+        <Button href="#/cards" text="View details" disabled={!isOnlyOneSelected} />
         <Button text="Edit" disabled={!isOnlyOneSelected} />
         <Button text="Delete" disabled={selectedDistributions.length === 0} />
         <Button href="#/create" variant="primary" text="Create Script" />
