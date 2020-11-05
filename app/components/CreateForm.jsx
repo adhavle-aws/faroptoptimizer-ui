@@ -81,7 +81,7 @@ export default class CreateForm extends React.Component {
 
 function handleClick(e){
   e.preventDefault();    
-  console.log('The link was clicked.'); 
+  alert('The link was clicked.'); 
 }
 
 // The content in the main content area of the App layout
@@ -106,7 +106,9 @@ class ContentDeliveryPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { deliveryMethod: 'script' };
+    this.state = { secondContent: 'solver2' };
     this.onChangeValue = this.onChangeValue.bind(this);
+    this.onSecondRadio = this.onSecondRadio.bind(this);
   }
 
  
@@ -118,6 +120,10 @@ class ContentDeliveryPanel extends React.Component {
     }
     console.log(this.state.deliveryMethod)
     console.log(this.state.secondaryMethod)
+  }
+
+  onSecondRadio(event) {
+    this.setState({secondContent: event.target.value});
   }
 
   render() {
@@ -398,8 +404,8 @@ class ContentDeliveryPanel extends React.Component {
       <FormSection header="Choose a template">
         <div class="container">
           <div class="card-deck">
-            <div class="row">
-              <div class="card mb-4 bg-info text-white">
+            <div class="row" style={{"width" : "100%"}}>
+              <div class="card">
                 <div class="card-header">
                   Solver
                 </div>
@@ -407,7 +413,7 @@ class ContentDeliveryPanel extends React.Component {
                   <awsui-radio-button initialized="true" >
                     <div class="awsui-radio-button">
                         <div class="awsui-radio-button-label">
-                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-09-value-script" value="solver" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio}/>
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                                 <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
@@ -423,17 +429,17 @@ class ContentDeliveryPanel extends React.Component {
                   </awsui-radio-button>  
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="btn btn-warning">Load template and execute</a>
+                  <Button href="#" variant="primary" text="Load template and execute" />
                 </div>
               </div>
               
-              <div class="card mb-4 bg-info text-white">
+              <div class="card">
                 <div class="card-header">Solver</div>
                 <div class="card-body">
-                <awsui-radio-button initialized="true">
+                <awsui-radio-button >
                     <div class="awsui-radio-button">
                         <div class="awsui-radio-button-label">
-                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver1" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                                 <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
@@ -449,7 +455,7 @@ class ContentDeliveryPanel extends React.Component {
                   </awsui-radio-button> 
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="btn btn-warning">Load template and execute</a>
+                  <Button href="#" variant="primary" text="Load template and execute" />
                 </div>
               </div>
               
@@ -457,7 +463,7 @@ class ContentDeliveryPanel extends React.Component {
           </div>
         </div>
       </FormSection>
-      }{
+      }{this.state.secondContent == 'solver1'  &&
         <FormSection header="Load template from S3">
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
@@ -495,7 +501,45 @@ class ContentDeliveryPanel extends React.Component {
         </ColumnLayout>
       </FormSection>
       
-      }
+      }{this.state.secondContent == 'solver'  &&
+      <FormSection header="Load template from GIT">
+      <ColumnLayout>
+        <div data-awsui-column-layout-root={true}>
+          <FormField
+            label={
+              <div>
+                Result output location
+                <a
+                  className="awsui-util-help-info-link"
+                  href="javascript:void(0);"
+                  onClick={() => props.replaceToolsContent(5)}
+                >
+                  Info
+                </a>
+              </div>
+            }
+            description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
+          >
+            <Select
+              placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
+              filteringType="auto"
+            />
+          </FormField>
+          <FormField
+            label="Git repository"
+            description="The template repo from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
+          >
+            <Multiselect
+              placeholder="Select an GIT repo for your template."
+              filteringType="auto"
+            />
+          </FormField>
+         
+        </div>
+      </ColumnLayout>
+    </FormSection>
+    
+    }
       
   </div>
             
