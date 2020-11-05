@@ -81,7 +81,7 @@ export default class CreateForm extends React.Component {
 
 function handleClick(e){
   e.preventDefault();    
-  alert('The link was clicked.'); 
+  
 }
 
 // The content in the main content area of the App layout
@@ -115,6 +115,7 @@ class ContentDeliveryPanel extends React.Component {
   onChangeValue(event) {
     console.log(event.target.value);
     this.setState({deliveryMethod: event.target.value});
+    this.setState({secondContent: "default"});
     if(event.target.value == "solver"){
       this.setState({secondaryMethod: event.target.value});
     }
