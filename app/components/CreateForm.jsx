@@ -106,7 +106,7 @@ class ContentDeliveryPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { deliveryMethod: 'script' };
-    this.state = { secondContent: 'solver2' };
+    this.state = { secondContent: 'solver' };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
   }
@@ -116,7 +116,7 @@ class ContentDeliveryPanel extends React.Component {
     console.log(event.target.value);
     this.setState({deliveryMethod: event.target.value});
     this.setState({secondContent: "default"});
-    if(event.target.value == "solver"){
+    if(event.target.value.startsWith("solver")){
       this.setState({secondaryMethod: event.target.value});
     }
     console.log(this.state.deliveryMethod)
@@ -396,6 +396,7 @@ class ContentDeliveryPanel extends React.Component {
                 filteringType="auto"
               />
             </FormField>
+            <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
            
           </div>
         </ColumnLayout>
@@ -406,9 +407,10 @@ class ContentDeliveryPanel extends React.Component {
         <div class="container">
           <div class="card-deck">
             <div class="row" style={{"width" : "100%"}}>
+
               <div class="card">
                 <div class="card-header">
-                  Solver
+                  Routing
                 </div>
                 <div class="card-body">
                   <awsui-radio-button initialized="true" >
@@ -422,20 +424,20 @@ class ContentDeliveryPanel extends React.Component {
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
-                              <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div>
+                            {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
                               <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with capacity constraints</span></span></span></div>
                           </div>
                         </div>
                     </div>
                   </awsui-radio-button>  
                 </div>
-                <div class="card-footer">
+                {/* <div class="card-footer">
                   <Button href="#" variant="primary" text="Load template and execute" />
-                </div>
+                </div> */}
               </div>
               
               <div class="card">
-                <div class="card-header">Solver</div>
+                <div class="card-header">Scheduling</div>
                 <div class="card-body">
                 <awsui-radio-button >
                     <div class="awsui-radio-button">
@@ -448,19 +450,73 @@ class ContentDeliveryPanel extends React.Component {
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
-                              <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div>
+                              {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
                               <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
                           </div>
                         </div>
                     </div>
                   </awsui-radio-button> 
                 </div>
-                <div class="card-footer">
+                {/* <div class="card-footer">
                   <Button href="#" variant="primary" text="Load template and execute" />
+                </div> */}
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  Black box</div>
+                <div class="card-body">
+                <awsui-radio-button >
+                    <div class="awsui-radio-button">
+                        <div class="awsui-radio-button-label">
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver2" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
+                          <div class="awsui-radio-button-styled-button">
+                              <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                              </svg>
+                          </div>
+                          <div class="awsui-radio-button-content">
+                              {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
+                          </div>
+                        </div>
+                    </div>
+                  </awsui-radio-button> 
                 </div>
+                {/* <div class="card-footer">
+                  <Button href="#" variant="primary" text="Load template and execute" />
+                </div> */}
+              </div>
+
+              <div class="card">
+                <div class="card-header">Quantum</div>
+                <div class="card-body">
+                <awsui-radio-button >
+                    <div class="awsui-radio-button">
+                        <div class="awsui-radio-button-label">
+                          <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver3" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
+                          <div class="awsui-radio-button-styled-button">
+                              <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                              </svg>
+                          </div>
+                          <div class="awsui-radio-button-content">
+                              {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
+                          </div>
+                        </div>
+                    </div>
+                  </awsui-radio-button> 
+                </div>
+                {/* <div class="card-footer">
+                  <Button href="#" variant="primary" text="Load template and execute" />
+                </div> */}
               </div>
               
             </div>
+            
           </div>
         </div>
       </FormSection>
@@ -497,8 +553,11 @@ class ContentDeliveryPanel extends React.Component {
                 filteringType="auto"
               />
             </FormField>
+            <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
            
           </div>
+          
+          
         </ColumnLayout>
       </FormSection>
       
@@ -535,12 +594,91 @@ class ContentDeliveryPanel extends React.Component {
               filteringType="auto"
             />
           </FormField>
+          <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
          
         </div>
       </ColumnLayout>
     </FormSection>
     
-    }
+    }{this.state.secondContent == 'solver2'  &&
+    <FormSection header="Load template from GIT2">
+    <ColumnLayout>
+      <div data-awsui-column-layout-root={true}>
+        <FormField
+          label={
+            <div>
+              Result output location
+              <a
+                className="awsui-util-help-info-link"
+                href="javascript:void(0);"
+                onClick={() => props.replaceToolsContent(5)}
+              >
+                Info
+              </a>
+            </div>
+          }
+          description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
+        >
+          <Select
+            placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
+            filteringType="auto"
+          />
+        </FormField>
+        <FormField
+          label="Git repository"
+          description="The template repo from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
+        >
+          <Multiselect
+            placeholder="Select an GIT repo for your template."
+            filteringType="auto"
+          />
+        </FormField>
+        <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
+       
+      </div>
+    </ColumnLayout>
+  </FormSection>
+  
+  }{this.state.secondContent == 'solver3'  &&
+  <FormSection header="Load template from GIT3">
+  <ColumnLayout>
+    <div data-awsui-column-layout-root={true}>
+      <FormField
+        label={
+          <div>
+            Result output location
+            <a
+              className="awsui-util-help-info-link"
+              href="javascript:void(0);"
+              onClick={() => props.replaceToolsContent(5)}
+            >
+              Info
+            </a>
+          </div>
+        }
+        description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
+      >
+        <Select
+          placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
+          filteringType="auto"
+        />
+      </FormField>
+      <FormField
+        label="Git repository"
+        description="The template repo from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
+      >
+        <Multiselect
+          placeholder="Select an GIT repo for your template."
+          filteringType="auto"
+        />
+      </FormField>
+      <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
+     
+    </div>
+  </ColumnLayout>
+</FormSection>
+
+}
       
   </div>
             
