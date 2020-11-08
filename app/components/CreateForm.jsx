@@ -75,6 +75,7 @@ const {
   ExpandableSection,
   Form,
   FormField,
+  FileUpload,
   FormSection,
   Input,
   Multiselect,
@@ -334,6 +335,7 @@ class ContentDeliveryPanel extends React.Component {
             <Editor height="50vh" language="python" value = {this.state.code}/>;
 
            </FormField>
+
             <Button text="Save script to library" onClick={handleClick}/>
           </div>
         </ColumnLayout>
