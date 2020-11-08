@@ -40,6 +40,8 @@ const {
   RadioGroup,
   Select,
   Textarea,
+  Wizard,
+  S3ResourceSelector,
   Tiles
 } = window['AWS-UI-Components-React'];
 
@@ -106,7 +108,7 @@ class ContentDeliveryPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { deliveryMethod: 'script' };
-    this.state = { secondContent: 'solver' };
+    this.state = { secondContent: 'solverdefault' };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
   }
@@ -405,13 +407,13 @@ class ContentDeliveryPanel extends React.Component {
       {this.state.deliveryMethod == 'template'    &&   
       <FormSection header="Choose a template">
         <div class="container">
-          <div class="card-deck">
+        {/* ROW 1 */}
+        
+        <div class="card-deck">
             <div class="row" style={{"width" : "100%"}}>
 
               <div class="card">
-                <div class="card-header">
-                  Routing
-                </div>
+                <div class="card-header">Vehicle Routing</div>
                 <div class="card-body">
                   <awsui-radio-button initialized="true" >
                     <div class="awsui-radio-button">
@@ -425,7 +427,7 @@ class ContentDeliveryPanel extends React.Component {
                           </div>
                           <div class="awsui-radio-button-content">
                             {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
-                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with capacity constraints</span></span></span></div>
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span> Optimal set of routes for a fleet of vehicles </span></span></span></div>
                           </div>
                         </div>
                     </div>
@@ -437,7 +439,7 @@ class ContentDeliveryPanel extends React.Component {
               </div>
               
               <div class="card">
-                <div class="card-header">Scheduling</div>
+                <div class="card-header"> Scheduling</div>
                 <div class="card-body">
                 <awsui-radio-button >
                     <div class="awsui-radio-button">
@@ -451,7 +453,7 @@ class ContentDeliveryPanel extends React.Component {
                           </div>
                           <div class="awsui-radio-button-content">
                               {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
-                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Assign jobs to resources at particular times</span></span></span></div>
                           </div>
                         </div>
                     </div>
@@ -464,7 +466,7 @@ class ContentDeliveryPanel extends React.Component {
 
               <div class="card">
                 <div class="card-header">
-                  Black box</div>
+                  Resource Allocation</div>
                 <div class="card-body">
                 <awsui-radio-button >
                     <div class="awsui-radio-button">
@@ -478,7 +480,7 @@ class ContentDeliveryPanel extends React.Component {
                           </div>
                           <div class="awsui-radio-button-content">
                               {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
-                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Optimize utilization of resources while maximizing a score</span></span></span></div>
                           </div>
                         </div>
                     </div>
@@ -490,7 +492,7 @@ class ContentDeliveryPanel extends React.Component {
               </div>
 
               <div class="card">
-                <div class="card-header">Quantum</div>
+                <div class="card-header">Black-box optimization</div>
                 <div class="card-body">
                 <awsui-radio-button >
                     <div class="awsui-radio-button">
@@ -504,7 +506,7 @@ class ContentDeliveryPanel extends React.Component {
                           </div>
                           <div class="awsui-radio-button-content">
                               {/* <div class="awsui-radio-button-label-text" awsui-radio-button-region="label" ><span><span><span>Routing</span></span></span></div> */}
-                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Vehicle Routing Problem with pickup and delivery constraints</span></span></span></div>
+                              <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Evolutionary optimization of a containerized function</span></span></span></div>
                           </div>
                         </div>
                     </div>
@@ -518,51 +520,102 @@ class ContentDeliveryPanel extends React.Component {
             </div>
             
           </div>
+          {/* ROW 2 */}
+        
         </div>
       </FormSection>
-      }{this.state.secondContent == 'solver1'  &&
-        <FormSection header="Load template from S3">
-        <ColumnLayout>
-          <div data-awsui-column-layout-root={true}>
-            <FormField
-              label={
-                <div>
-                  Result output location
-                  <a
-                    className="awsui-util-help-info-link"
-                    href="javascript:void(0);"
-                    onClick={() => props.replaceToolsContent(5)}
-                  >
-                    Info
-                  </a>
-                </div>
-              }
-              description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
-            >
-              <Select
-                placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
-                filteringType="auto"
-              />
-            </FormField>
-            <FormField
-              label="Git repository"
-              description="The template repo from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
-            >
+      }{this.state.secondContent == 'solver'  &&
+      <FormSection header="Vehicle Routing problem with optional capacity constraints"> 
+      <Wizard steps={
+        [
+          {
+            title: 'Define Location IDs',
+            info: () => <a className="awsui-util-help-info-link">Info</a>,
+            description:
+              ' Browse to a CSV file on S3 with a list of locations. The Row number is the ID of that location',
+            content: () => 
+              (<FormSection
+                header="S3 location"
+                content={
+                  <ColumnLayout>
+                    <div data-awsui-column-layout-root="true">
+                    <FormField
+              label="Additional source code / inputs location"
+               >
               <Multiselect
-                placeholder="Select an GIT repo for your template."
+                placeholder="S3://Path/to/file.csv"
                 filteringType="auto"
               />
             </FormField>
-            <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
-           
-          </div>
-          
-          
-        </ColumnLayout>
+                    </div>
+                  </ColumnLayout>
+                }
+              />)
+          },
+          {
+            title: 'Define demand values',
+            description:
+              ' Browse to a CSV file on S3 with a list of demand values, one for each location ID',
+            content: () => 
+            (<FormSection
+              header="S3 location"
+              content={
+                <ColumnLayout>
+                  <div data-awsui-column-layout-root="true">
+                  <FormField
+            label="Additional source code / inputs location"
+             >
+            <Multiselect
+              placeholder="S3://Path/to/file.csv"
+              filteringType="auto"
+            />
+          </FormField>
+                  </div>
+                </ColumnLayout>
+              }
+            />)
+          },
+          {
+            title: 'Define vehicle capacities',
+            description:
+              ' Browse to a CSV file on S3 with the maximum capacity that each vehicle can hold. The number of rows is the number of vehicles in the fleet',
+            content: () => 
+            (<FormSection
+              header="S3 location"
+              content={
+                <ColumnLayout>
+                  <div data-awsui-column-layout-root="true">
+                  <FormField
+            label="Additional source code / inputs location"
+             >
+            <Multiselect
+              placeholder="S3://Path/to/file.csv"
+              filteringType="auto"
+            />
+          </FormField>
+                  </div>
+                </ColumnLayout>
+              }
+            />),
+            isOptional: true
+          }
+        ]
+      } i18nStrings={
+        {
+          stepNumberLabel: stepNumber => `Step ${stepNumber}`,
+          collapsedStepsLabel: (stepNumber, stepsCount) =>
+            `Step ${stepNumber} of ${stepsCount}`,
+          cancelButton: 'Cancel',
+          previousButton: 'Previous',
+          nextButton: 'Next',
+          submitButton: 'Run Job',
+          optional: 'optional'
+        }
+      }></Wizard>
       </FormSection>
       
-      }{this.state.secondContent == 'solver'  &&
-      <FormSection header="Load template from GIT">
+      }{this.state.secondContent == 'solver1'  &&
+      <FormSection header="TO DO: Mock up of problem type 2">
       <ColumnLayout>
         <div data-awsui-column-layout-root={true}>
           <FormField
@@ -601,7 +654,7 @@ class ContentDeliveryPanel extends React.Component {
     </FormSection>
     
     }{this.state.secondContent == 'solver2'  &&
-    <FormSection header="Load template from GIT2">
+    <FormSection header="TO DO: Mock up of problem type 3">
     <ColumnLayout>
       <div data-awsui-column-layout-root={true}>
         <FormField
@@ -640,13 +693,14 @@ class ContentDeliveryPanel extends React.Component {
   </FormSection>
   
   }{this.state.secondContent == 'solver3'  &&
-  <FormSection header="Load template from GIT3">
+  <FormSection header="Black-box optimization">
   <ColumnLayout>
     <div data-awsui-column-layout-root={true}>
+      
       <FormField
         label={
           <div>
-            Result output location
+            ECR container with your function
             <a
               className="awsui-util-help-info-link"
               href="javascript:void(0);"
@@ -656,23 +710,73 @@ class ContentDeliveryPanel extends React.Component {
             </a>
           </div>
         }
-        description="The Amazon S3 bucket to which you want FarOpt to output results of your code."
+        description="The registry path where the image returining a function value is stored in Amazon ECR."
       >
         <Select
-          placeholder="Select the Amazon S3 bucket from which you want FarOpt to output results of your code."
+          placeholder="Select the ECR container that contains the function you want to optimize with FarOpt"
           filteringType="auto"
         />
       </FormField>
+        
       <FormField
-        label="Git repository"
-        description="The template repo from which you want FarOpt to get your project source code. Also include a requirements.txt at the root to install more packages!"
-      >
-        <Multiselect
-          placeholder="Select an GIT repo for your template."
-          filteringType="auto"
-        />
+      label={
+        <div>
+          Select an optimizer
+          </div>}
+          description="Choice of state of the art black-box optimizers"
+          >
+      <Select options={[
+        {
+          "label": "Parallel Genetic Algorithm",
+          "id": "1"
+        },
+        {
+          "label": "Covariance Matrix Adaptation Evolution Strategy (CMAES)",
+          "id": "2"
+        },
+        {
+          "label": "Pareto Archived Evolution Strategy (PAES)",
+          "id": "3"
+        },
+        {
+          "label": "Coming soon ...",
+          "options": [
+            {
+              "label": "Nondominated Sorting Genetic Algorithm (NSGA-II)",
+              "id": "4"
+            },
+            {
+              "label": "Deep Neural Global Optimizer",
+              "id": "5"
+            }
+          ],
+          "id": "4",
+          "disabled": true
+        }
+      ]} selectedOption={{
+        "label": "Select an algorithm",
+        "id": "1"
+      }} selectedLabel="Selected"></Select>
       </FormField>
-      <FormField><div><Button href="#" variant="primary" text="Load template and execute" /></div></FormField>
+      <FormField>
+
+      <RadioGroup value="Minimize" items={
+        [
+          {
+            "value": "Minimize",
+            "label": "Minimize"
+          },
+          {
+            "value": "Maximize",
+            "label": "Maximize"
+          }
+        ]
+      }></RadioGroup>
+
+      </FormField>
+
+
+      <FormField><div><Button href="#" variant="primary" text="Run Job" /></div></FormField>  
      
     </div>
   </ColumnLayout>
