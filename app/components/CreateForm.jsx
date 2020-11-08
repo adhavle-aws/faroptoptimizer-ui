@@ -11,11 +11,14 @@ import React from 'react';
 import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
-import Editor from 'react-simple-code-editor';
+// import Editor from 'react-simple-code-editor';
+import Editor from "@monaco-editor/react";
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
+
+
 
 
 const code = `from ortools.sat.python import cp_model
@@ -313,15 +316,23 @@ class ContentDeliveryPanel extends React.Component {
                 </span>
               }
               stretch={true}
-            >             
+            >          
+
+            {/* OPTION 1    */}
               {/* <iframe id="cheapHack" src="https://ace.c9.io/build/kitchen-sink.html"  width="100%" height="580px;" frameborder="0"></iframe> */}
            
-                <Editor
+            {/* OPTION 2 */}
+                {/* <Editor
                   value={this.state.code}
                   onValueChange={code => this.setState({ code })}
                   highlight={code => highlight(code, languages.python)}
                   padding={10}
-                />
+                /> */}
+
+            {/* OPTION 3 */}
+
+            <Editor height="50vh" language="python" value = {this.state.code}/>;
+
            </FormField>
             <Button text="Save script to library" onClick={handleClick}/>
           </div>
