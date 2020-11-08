@@ -55,7 +55,7 @@ const Content = () => (
               <h2>Create an Optimization script</h2>
               <FormField stretch={true} label="Delivery method" className="awsui-util-d-b">
                 <Select
-                  options={[{ id: '1', label: 'Use a FarOpt Blueprint' },{ id: '2', label: 'Use OR Tools' },{ id: '3', label: 'Use Pyomo' },{ id: '4', label: 'Use Gurobi' },{ id: '5', label: 'Use CPLex' }]}
+                  options={[{ id: '1', label: 'Use a FarOpt Template' },{ id: '2', label: 'Create a Script' },{ id: '3', label: 'Connect to S3' },{ id: '4', label: 'Connect to Git' }]}
                   selectedOption={{ id: '1', label: 'Use a FarOpt Blueprint' }}
                   className="awsui-util-mb-xl"
                 />

@@ -18,7 +18,6 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 
 
-
 const code = `from ortools.sat.python import cp_model
 
 
@@ -320,12 +319,8 @@ class ContentDeliveryPanel extends React.Component {
                 <Editor
                   value={this.state.code}
                   onValueChange={code => this.setState({ code })}
-                  highlight={code => highlight(code, languages.js)}
+                  highlight={code => highlight(code, languages.python)}
                   padding={10}
-                  style={{
-                    fontFamily: '"Fira code", "Fira Mono", monospace',
-                    fontSize: 12,
-                  }}
                 />
            </FormField>
             <Button text="Save script to library" onClick={handleClick}/>
