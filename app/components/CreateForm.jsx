@@ -11,6 +11,45 @@ import React from 'react';
 import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-python';
+
+
+
+const code = `from ortools.sat.python import cp_model
+
+
+def main():
+  model = cp_model.CpModel()
+  var_upper_bound = max(50, 45, 37)
+  x = model.NewIntVar(0, var_upper_bound, 'x')
+  y = model.NewIntVar(0, var_upper_bound, 'y')
+  z = model.NewIntVar(0, var_upper_bound, 'z')
+
+  model.Add(2*x + 7*y + 3*z <= 50)
+  model.Add(3*x - 5*y + 7*z <= 45)
+  model.Add(5*x + 2*y - 6*z <= 37)
+
+  model.Maximize(2*x + 2*y + 3*z)
+
+  solver = cp_model.CpSolver()
+  status = solver.Solve(model)
+
+  if status == cp_model.OPTIMAL:
+    print('Maximum of objective function: %i' % solver.ObjectiveValue())
+    print()
+    print('x value: ', solver.Value(x))
+    print('y value: ', solver.Value(y))
+    print('z value: ', solver.Value(z))
+
+
+if __name__ == '__main__':
+  main()
+`;
+
 
 import {
   ALLOWED_HTTP_METHOD_OPTIONS,
@@ -51,6 +90,7 @@ export default class CreateForm extends React.Component {
     super(props);
     this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
     this.state.isLoggedIn = false;
+    
   }
   componentDidMount() {
     let dataProvider = new DataProvider();
@@ -111,6 +151,7 @@ class ContentDeliveryPanel extends React.Component {
     this.state = { secondContent: 'solverdefault' };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
+    this.state.code = code;
   }
 
  
@@ -150,7 +191,7 @@ class ContentDeliveryPanel extends React.Component {
         >
 <div class="awsui-tiles">
    <div class="awsui-tiles__columns awsui-tiles__columns--2" onChange={this.onChangeValue}>
-      <label class="awsui-tiles__tile-container" for="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
+      <label class="awsui-tiles__tile-container" htmlFor="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
          <div class="awsui-tiles__control awsui-tiles__control--no-image" >
             <awsui-radio-button initialized="true">
                <div class="awsui-radio-button">
@@ -158,8 +199,8 @@ class ContentDeliveryPanel extends React.Component {
                      <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="script" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                      <div class="awsui-radio-button-styled-button">
                         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                           <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                           <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                           <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                           <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                         </svg>
                      </div>
                      <div class="awsui-radio-button-content">
@@ -171,7 +212,7 @@ class ContentDeliveryPanel extends React.Component {
             </awsui-radio-button>
          </div>
       </label>
-      <label class="awsui-tiles__tile-container" for="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
+      <label class="awsui-tiles__tile-container" htmlFor="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
          <div class="awsui-tiles__control awsui-tiles__control--no-image">
             <awsui-radio-button initialized="true">
                <div class="awsui-radio-button">
@@ -179,8 +220,8 @@ class ContentDeliveryPanel extends React.Component {
                      <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="git" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                      <div class="awsui-radio-button-styled-button">
                         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                           <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                           <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                           <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                           <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                         </svg>
                      </div>
                      <div class="awsui-radio-button-content">
@@ -192,7 +233,7 @@ class ContentDeliveryPanel extends React.Component {
             </awsui-radio-button>
          </div>
       </label>
-      <label class="awsui-tiles__tile-container" for="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
+      <label class="awsui-tiles__tile-container" htmlFor="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
          <div class="awsui-tiles__control awsui-tiles__control--no-image">
             <awsui-radio-button initialized="true">
                <div class="awsui-radio-button">
@@ -200,8 +241,8 @@ class ContentDeliveryPanel extends React.Component {
                      <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="S3" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                      <div class="awsui-radio-button-styled-button">
                         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                           <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                           <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                           <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                           <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                         </svg>
                      </div>
                      <div class="awsui-radio-button-content">
@@ -213,7 +254,7 @@ class ContentDeliveryPanel extends React.Component {
             </awsui-radio-button>
          </div>
       </label>
-      <label class="awsui-tiles__tile-container" for="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
+      <label class="awsui-tiles__tile-container" htmlFor="awsui-tiles-0-value-script" id="awsui-tiles-0-value-script-label">
          <div class="awsui-tiles__control awsui-tiles__control--no-image">
             <awsui-radio-button initialized="true">
                <div class="awsui-radio-button">
@@ -221,8 +262,8 @@ class ContentDeliveryPanel extends React.Component {
                      <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-0-value-script" value="template" name="awsui-tiles-0" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label"/>
                      <div class="awsui-radio-button-styled-button">
                         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                           <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                           <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                           <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                           <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                         </svg>
                      </div>
                      <div class="awsui-radio-button-content">
@@ -274,7 +315,18 @@ class ContentDeliveryPanel extends React.Component {
               }
               stretch={true}
             >             
-              <iframe id="cheapHack" src="https://ace.c9.io/build/kitchen-sink.html"  width="100%" height="580px;" frameborder="0"></iframe>
+              {/* <iframe id="cheapHack" src="https://ace.c9.io/build/kitchen-sink.html"  width="100%" height="580px;" frameborder="0"></iframe> */}
+           
+                <Editor
+                  value={this.state.code}
+                  onValueChange={code => this.setState({ code })}
+                  highlight={code => highlight(code, languages.js)}
+                  padding={10}
+                  style={{
+                    fontFamily: '"Fira code", "Fira Mono", monospace',
+                    fontSize: 12,
+                  }}
+                />
            </FormField>
             <Button text="Save script to library" onClick={handleClick}/>
           </div>
@@ -421,8 +473,8 @@ class ContentDeliveryPanel extends React.Component {
                           <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-09-value-script" value="solver" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio}/>
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                                <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
@@ -447,8 +499,8 @@ class ContentDeliveryPanel extends React.Component {
                           <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver1" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                                <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
@@ -474,8 +526,8 @@ class ContentDeliveryPanel extends React.Component {
                           <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver2" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                                <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
@@ -500,8 +552,8 @@ class ContentDeliveryPanel extends React.Component {
                           <input type="radio" class="awsui-radio-native-input" override-focus="" id="awsui-tiles-10-value-script" value="solver3" name="awsui-tiles-10" aria-labelledby="awsui-tiles-0-label awsui-tiles-0-value-script-label" onClick={this.onSecondRadio} />
                           <div class="awsui-radio-button-styled-button">
                               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                                <circle class="awsui-radio-button-styled-circle" stroke-width="8" cx="50" cy="50" r="46"></circle>
-                                <circle class="awsui-radio-button-styled-circle-checked" stroke-width="30" cx="50" cy="50" r="35"></circle>
+                                <circle class="awsui-radio-button-styled-circle" strokeWidth="8" cx="50" cy="50" r="46"></circle>
+                                <circle class="awsui-radio-button-styled-circle-checked" strokeWidth="30" cx="50" cy="50" r="35"></circle>
                               </svg>
                           </div>
                           <div class="awsui-radio-button-content">
