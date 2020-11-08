@@ -73,7 +73,7 @@ const Content = () => (
         <div className="awsui-util-container">
           <div  >
          
-          <img src="./images/FarOpt.jpeg" className="intro-screenshot" alt="screenshot" width="100%"/>
+          <img src="./images/whatisfaropt1slide.png" width="100%" alt="screenshot"/>
         
           </div>
         </div>
