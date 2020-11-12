@@ -125,6 +125,15 @@ export default class CreateForm extends React.Component {
 }
 
 function handleClick(e){
+  const headers = { 
+    crossDomain:true,
+    method: 'GET',
+    headers: {'Content-Type':'application/json'}
+  }
+  const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=list_jobs';
+    fetch(apiUrl, headers)  
+      .then((response) => response.json())
+      .then((data) => console.log('This is your data', data));
   e.preventDefault();    
   
 }
