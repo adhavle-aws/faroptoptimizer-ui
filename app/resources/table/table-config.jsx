@@ -6,7 +6,7 @@ export const COLUMN_DEFINITIONS = [
     header: () => 'Reciepe ID',
     cell: item => (
       <div>
-        <a href={`#/cards`}>{item.id}</a>
+        <a href={`#/cards`}>{item.recipeid}</a>
       </div>
     ),
     allowLineWrap: true
@@ -14,21 +14,21 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'contributor',
     header: () => 'Contributor',
-    cell: item => item.contributor,
+    cell: item => 'FarOpt Library',
     minWidth: '100px',
     allowLineWrap: true
   },
   {
     id: 'domain',
     header: () => 'Domain',
-    cell: item => item.domain,
+    cell: item => 'Optimizer',
     minWidth: '100px',
     allowLineWrap: true
   },
   {
     id: 'description',
     header: () => 'description',
-    cell: item => item.description,
+    cell: item => item.bucket,
     minWidth: '100px',
     allowLineWrap: true
   },
