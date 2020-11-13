@@ -201,6 +201,7 @@ class ContentDeliveryPanel extends React.Component {
   }
   
    handleClick(e){ 
+    this.setState({ value: '' });
     console.log(this.state.code);
     if(this.state.code === undefined){
       this.state.code = srccode
@@ -243,6 +244,7 @@ class ContentDeliveryPanel extends React.Component {
   }
 
   onCodeChange(newValue, e) {
+    this.setState({ value: 'false' });
     this.setState({code:e});   
   }
 
@@ -396,7 +398,7 @@ class ContentDeliveryPanel extends React.Component {
            <ControlledEditor height="50vh" language="python" value = {srccode}  onChange = {this.onCodeChange}/>;
            </FormField>
             <div className="awsui-util-action-stripe-group">
-                <Button text="Save script to library" variant="primary" onClick={this.handleClick}/>
+                <Button text="Save script to library" variant="primary" disabled={!this.state.value} onClick={this.handleClick}/>
                 <Button variant="primary" text="Run Script" onClick={handleRun} />
             </div>
           </div>
