@@ -141,6 +141,23 @@ function handleClick(e){
   e.preventDefault();    
 }
 
+function handleRun(e){ 
+  const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
+  fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: code,
+    secondParam: 'yourOtherValue',
+  })})
+  .then((response) => response.json())
+  .then((data) => console.log('This is your data', data));
+  e.preventDefault();    
+}
+
 // The content in the main content area of the App layout
 const Content = props => (
   <div style={{width:120 + "%"}}>
@@ -345,10 +362,11 @@ class ContentDeliveryPanel extends React.Component {
             {/* OPTION 3 */}
 
             <Editor height="50vh" language="python" value = {this.state.code}/>;
-
            </FormField>
-
-            <Button text="Save script to library" onClick={handleClick}/>
+            <div className="awsui-util-action-stripe-group">
+                <Button text="Save script to library" variant="primary" onClick={handleClick}/>
+                <Button variant="primary" text="Run Script" onClick={handleRun} />
+            </div>
           </div>
         </ColumnLayout>
       </FormSection>

@@ -1,4 +1,4 @@
-const { Icon } = window['AWS-UI-Components-React'];
+const { Icon, Button } = window['AWS-UI-Components-React'];
 
 export const COLUMN_DEFINITIONS = [
   {
@@ -27,12 +27,23 @@ export const COLUMN_DEFINITIONS = [
   },
   {
     id: 'description',
-    header: () => 'description',
+    header: () => 'Description',
     cell: item => item.bucket,
     minWidth: '100px',
     allowLineWrap: true
   },
+  {
+    id: 'action',
+    header: () => 'Action',
+    cell: <Button text="Run" variant="primary" onClick={handleClick()}/>,
+    minWidth: '100px',
+    allowLineWrap: true
+  }
 ];
+
+  function handleClick(){
+   
+  }
 
 export const SORTABLE_COLUMNS = [
   { id: 'id', field: 'id' },
@@ -68,6 +79,12 @@ export const CONTENT_SELECTOR_OPTIONS = [
         id: 'description',
         label: 'Description',
         editable: true,
+        visible: true
+      },
+      {
+        id: 'action',
+        label: 'Action',
+        editable: false,
         visible: true
       }
     ]
