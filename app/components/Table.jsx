@@ -71,9 +71,16 @@ class DetailsTable extends React.Component {
       headers: {'Content-Type':'application/json'}
     }
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=list_recipes';
-    fetch(apiUrl, headers)  
+    fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      })
       .then((response) => response.json())
       .then((distributions) => this.setState({ distributions: distributions.list_recipes }));
+
   }
 
   // Keeps track of how many distributions are selected

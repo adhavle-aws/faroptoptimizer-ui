@@ -126,19 +126,18 @@ export default class CreateForm extends React.Component {
 
 function handleClick(e){ 
   const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
-  console.log(code)
-     fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstParam: code,
-        secondParam: 'yourOtherValue',
-      })})
-      .then((response) => response.json())
-      .then((data) => console.log('This is your data', data));
+  fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: code,
+    secondParam: 'yourOtherValue',
+  })})
+  .then((response) => response.json())
+  .then((data) => console.log('This is your data', data));
   e.preventDefault();    
 }
 
