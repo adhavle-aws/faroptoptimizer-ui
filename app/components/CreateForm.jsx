@@ -18,7 +18,7 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 
-const code = `from ortools.sat.python import cp_model
+const srccode = `from ortools.sat.python import cp_model
 
 def main():
   model = cp_model.CpModel()
@@ -127,7 +127,7 @@ function handleRun(e){
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    firstParam: code,
+    firstParam: srccode,
     secondParam: 'yourOtherValue',
   })})
   .then((response) => response.json())
@@ -165,7 +165,35 @@ class ContentDeliveryPanel extends React.Component {
     this.onCodeChange = this.onCodeChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.state = {
-      code: code,
+      code: `from ortools.sat.python import cp_model
+
+      def main():
+        model = cp_model.CpModel()
+        var_upper_bound = max(50, 45, 37)
+        x = model.NewIntVar(0, var_upper_bound, 'x')
+        y = model.NewIntVar(0, var_upper_bound, 'y')
+        z = model.NewIntVar(0, var_upper_bound, 'z')
+      
+        model.Add(2*x + 7*y + 3*z <= 50)
+        model.Add(3*x - 5*y + 7*z <= 45)
+        model.Add(5*x + 2*y - 6*z <= 37)
+      
+        model.Maximize(2*x + 2*y + 3*z)
+      
+        solver = cp_model.CpSolver()
+        status = solver.Solve(model)
+      
+        if status == cp_model.OPTIMAL:
+          print('Maximum of objective function: %i' % solver.ObjectiveValue())
+          print()
+          print('x value: ', solver.Value(x))
+          print('y value: ', solver.Value(y))
+          print('z value: ', solver.Value(z))
+      
+      
+      if __name__ == '__main__':
+        main()
+      `
     };
     this.state ={
       desc: 'Provide a description for the recipe'
@@ -173,6 +201,10 @@ class ContentDeliveryPanel extends React.Component {
   }
   
    handleClick(e){ 
+    console.log(this.state.code);
+    if(this.state.code === undefined){
+      this.state.code = srccode
+    }
     console.log(this.state.code);
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
     fetch(apiUrl, {
@@ -361,7 +393,7 @@ class ContentDeliveryPanel extends React.Component {
             >    
 
             <hr/>         
-           <ControlledEditor height="50vh" language="python" value = {code}  onChange = {this.onCodeChange}/>;
+           <ControlledEditor height="50vh" language="python" value = {srccode}  onChange = {this.onCodeChange}/>;
            </FormField>
             <div className="awsui-util-action-stripe-group">
                 <Button text="Save script to library" variant="primary" onClick={this.handleClick}/>
