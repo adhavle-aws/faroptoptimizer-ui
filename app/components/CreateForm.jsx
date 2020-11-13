@@ -12,17 +12,13 @@ import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
 // import Editor from 'react-simple-code-editor';
-import Editor from "@monaco-editor/react";
+import {ControlledEditor} from "@monaco-editor/react";
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 
-
-
-
 const code = `from ortools.sat.python import cp_model
-
 
 def main():
   model = cp_model.CpModel()
@@ -93,7 +89,6 @@ export default class CreateForm extends React.Component {
     super(props);
     this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
     this.state.isLoggedIn = false;
-    
   }
   componentDidMount() {
     let dataProvider = new DataProvider();
@@ -103,10 +98,8 @@ export default class CreateForm extends React.Component {
   render() {
     return (
       <AppLayout
-        
         navigation={<FarOptNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
         breadcrumbs={<Breadcrumbs />}
-        
         content={
           <Content
             // Changes the Help panel content when the user clicks an 'info' link
@@ -124,22 +117,6 @@ export default class CreateForm extends React.Component {
   }
 }
 
-function handleClick(e){ 
-  const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
-  fetch(apiUrl, {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    firstParam: code,
-    secondParam: 'yourOtherValue',
-  })})
-  .then((response) => response.json())
-  .then((data) => console.log('This is your data', data));
-  e.preventDefault();    
-}
 
 function handleRun(e){ 
   const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
@@ -181,14 +158,45 @@ class ContentDeliveryPanel extends React.Component {
     super(props);
     this.state = { deliveryMethod: 'script' };
     this.state = { secondContent: 'solverdefault' };
+    this.state = { desc: 'Provide a description for the recipe'};
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
-    this.state.code = code;
+    this.handleClick = this.handleClick.bind(this);
+    this.onCodeChange = this.onCodeChange.bind(this);
+    this.onDescChange = this.onDescChange.bind(this);
+    this.state = {
+      code: code,
+    };
+    this.state ={
+      desc: 'Provide a description for the recipe'
+    };
+  }
+  
+   handleClick(e){ 
+    console.log(this.state.code);
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=add_recipes';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstParam: this.state.code,
+      secondParam: 'yourOtherValue',
+    })})
+    .then((response) => response.json())
+    .then((data) => console.log('This is your data', data));
+    e.preventDefault();    
+  }
+  
+  onDescChange(event){
+    console.log(event.target.value)
+    this.setState({desc: event.target.value});
+    console.log(this.state.desc)
   }
 
- 
   onChangeValue(event) {
-    console.log(event.target.value);
     this.setState({deliveryMethod: event.target.value});
     this.setState({secondContent: "default"});
     if(event.target.value.startsWith("solver")){
@@ -200,6 +208,10 @@ class ContentDeliveryPanel extends React.Component {
 
   onSecondRadio(event) {
     this.setState({secondContent: event.target.value});
+  }
+
+  onCodeChange(newValue, e) {
+    this.setState({code:e});   
   }
 
   render() {
@@ -346,25 +358,13 @@ class ContentDeliveryPanel extends React.Component {
                 </span>
               }
               stretch={true}
-            >          
+            >    
 
-            {/* OPTION 1    */}
-              {/* <iframe id="cheapHack" src="https://ace.c9.io/build/kitchen-sink.html"  width="100%" height="580px;" frameborder="0"></iframe> */}
-           
-            {/* OPTION 2 */}
-                {/* <Editor
-                  value={this.state.code}
-                  onValueChange={code => this.setState({ code })}
-                  highlight={code => highlight(code, languages.python)}
-                  padding={10}
-                /> */}
-
-            {/* OPTION 3 */}
-
-            <Editor height="50vh" language="python" value = {this.state.code}/>;
+            <hr/>         
+           <ControlledEditor height="50vh" language="python" value = {code}  onChange = {this.onCodeChange}/>;
            </FormField>
             <div className="awsui-util-action-stripe-group">
-                <Button text="Save script to library" variant="primary" onClick={handleClick}/>
+                <Button text="Save script to library" variant="primary" onClick={this.handleClick}/>
                 <Button variant="primary" text="Run Script" onClick={handleRun} />
             </div>
           </div>
