@@ -19,16 +19,9 @@ export const COLUMN_DEFINITIONS = [
     allowLineWrap: true
   },
   {
-    id: 'domain',
-    header: () => 'Domain',
-    cell: item => 'Optimizer',
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
     id: 'description',
     header: () => 'Description',
-    cell: item => item.bucket,
+    cell: item => item.description,
     minWidth: '100px',
     allowLineWrap: true
   },

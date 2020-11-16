@@ -66,6 +66,7 @@ const {
   AttributeEditor,
   BreadcrumbGroup,
   Button,
+  InputGroup,
   Checkbox,
   ColumnLayout,
   ExpandableSection,
@@ -156,6 +157,8 @@ const Content = props => (
 class ContentDeliveryPanel extends React.Component {
   constructor(props) {
     super(props);
+    this.description =  "Numerical Optimization";
+    this.maintainer =  "FarOpt";
     this.state = { deliveryMethod: 'script' };
     this.state = { secondContent: 'solverdefault' };
     this.state = { desc: 'Provide a description for the recipe'};
@@ -164,6 +167,7 @@ class ContentDeliveryPanel extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
+    this.onMaintainerChange = this.onMaintainerChange.bind(this);
     this.state = {
       code: `from ortools.sat.python import cp_model
 
@@ -195,9 +199,6 @@ class ContentDeliveryPanel extends React.Component {
         main()
       `
     };
-    this.state ={
-      desc: 'Provide a description for the recipe'
-    };
   }
   
    handleClick(e){ 
@@ -216,7 +217,8 @@ class ContentDeliveryPanel extends React.Component {
     },
     body: JSON.stringify({
       firstParam: this.state.code,
-      secondParam: 'yourOtherValue',
+      description: this.description,
+      maintainer:this.maintainer
     })})
     .then((response) => response.json())
     .then((data) => console.log('This is your data', data));
@@ -224,9 +226,11 @@ class ContentDeliveryPanel extends React.Component {
   }
   
   onDescChange(event){
-    console.log(event.target.value)
-    this.setState({desc: event.target.value});
-    console.log(this.state.desc)
+    this.description = event.detail.value
+  }
+
+  onMaintainerChange(event){
+    this.maintainer = event.detail.value
   }
 
   onChangeValue(event) {
@@ -235,8 +239,7 @@ class ContentDeliveryPanel extends React.Component {
     if(event.target.value.startsWith("solver")){
       this.setState({secondaryMethod: event.target.value});
     }
-    console.log(this.state.deliveryMethod)
-    console.log(this.state.secondaryMethod)
+    
   }
 
   onSecondRadio(event) {
@@ -393,7 +396,12 @@ class ContentDeliveryPanel extends React.Component {
               }
               stretch={true}
             >    
-
+            <FormField label="Description for the script" description="Short description for the script">
+              <Input placeholder="Description" value={this.description} onChange = {this.onDescChange}/>
+            </FormField>
+            <FormField label="Script maintained/created by" description="Maintainer name">
+              <Input placeholder="Maintainer" value={this.maintainer} onChange = {this.onMaintainerChange}/>
+            </FormField>
             <hr/>         
            <ControlledEditor height="50vh" language="python" value = {srccode}  onChange = {this.onCodeChange}/>;
            </FormField>
