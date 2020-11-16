@@ -222,6 +222,7 @@ class ContentDeliveryPanel extends React.Component {
     })})
     .then((response) => response.json())
     .then((data) => console.log('This is your data', data));
+    window.location.href='/#/table'
     e.preventDefault();    
   }
   
