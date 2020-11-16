@@ -165,6 +165,7 @@ class ContentDeliveryPanel extends React.Component {
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleRun = this.handleRun.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onMaintainerChange = this.onMaintainerChange.bind(this);
@@ -223,6 +224,27 @@ class ContentDeliveryPanel extends React.Component {
     .then((response) => response.json())
     .then((data) => console.log('This is your data', data));
     window.location.href='/#/table'
+    e.preventDefault();    
+  }
+
+  handleRun(e){ 
+    this.setState({ value: '' });
+    if(this.state.code === undefined){
+      this.state.code = srccode
+    }
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstParam: this.state.code,
+      description: this.description,
+      maintainer:this.maintainer
+    })})
+    .then((response) => response.json());
     e.preventDefault();    
   }
   
@@ -408,7 +430,7 @@ class ContentDeliveryPanel extends React.Component {
            </FormField>
             <div className="awsui-util-action-stripe-group">
                 <Button text="Save script to library" variant="primary" disabled={!this.state.value} onClick={this.handleClick}/>
-                <Button variant="primary" text="Run Script" onClick={handleRun} />
+                <Button variant="primary" text="Run Script" disabled={!this.state.value} onClick={this.handleRun} />
             </div>
           </div>
         </ColumnLayout>

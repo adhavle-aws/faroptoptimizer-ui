@@ -61,6 +61,7 @@ class DetailsTable extends React.Component {
       pageSize: 30,
       filteringText: ''
     };
+    this.handleRun = this.handleRun.bind(this);
   }
 
   componentDidMount() {
@@ -109,6 +110,27 @@ class DetailsTable extends React.Component {
     this.setState({
       filteringText: ''
     });
+  }
+
+  handleRun(e){ 
+    this.setState({ value: '' });
+    if(this.state.code === undefined){
+      this.state.code = srccode
+    }
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstParam: this.state.code,
+      description: this.description,
+      maintainer:this.maintainer
+    })})
+    .then((response) => response.json());
+    e.preventDefault();    
   }
 
   render() {

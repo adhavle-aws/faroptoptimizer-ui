@@ -28,15 +28,26 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'action',
     header: () => 'Action',
-    cell: <Button text="Run" variant="primary" onClick={handleClick()}/>,
+    cell: item => (<Button text="Run" variant="primary" onClick={() => { handleRun(item.recipeid) }}/>),
     minWidth: '100px',
     allowLineWrap: true
   }
 ];
 
-  function handleClick(){
-   
-  }
+function handleRun(recipeId){ 
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_recipe';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      recipeName: recipeId
+    })})
+    
+}
+
 
 export const SORTABLE_COLUMNS = [
   { id: 'id', field: 'id' },
