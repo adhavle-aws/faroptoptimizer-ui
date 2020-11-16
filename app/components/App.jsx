@@ -18,7 +18,7 @@ import Cards from './MyCards.jsx';
 
 // Class App is the "output" generated on every build,
 // it is what you will see on the webpage.
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       // When you create a new file or template, add it below
@@ -35,3 +35,4 @@ export default class App extends React.Component {
     );
   }
 }
+export default App;
