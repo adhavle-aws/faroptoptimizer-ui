@@ -5,25 +5,21 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'id',
     header: () => 'Job ID',
-    cell: item => (
-      <div>
-        <a href={`#/cards`}>{item.jobid}</a>
-      </div>
-    ),
+    cell: item => item.jobid,
     allowLineWrap: true
   },
   {
     id: 'bucket',
     header: () => 'Bucket',
     cell: item => item.bucket,
-    minWidth: '100px',
+    minWidth: '300px',
     allowLineWrap: true
   },
   {
     id: 'path',
     header: () => 'Path',
     cell: item => item.path,
-    minWidth: '100px',
+    minWidth: '300px',
     allowLineWrap: true
   }
 ];
