@@ -10,6 +10,11 @@
             "StackName": "amplify-faroptoptimizer-dev-224249",
             "StackId": "arn:aws:cloudformation:us-east-1:142396614969:stack/amplify-faroptoptimizer-dev-224249/1e7964d0-1347-11eb-af35-1277ff2044b7",
             "AmplifyAppId": "d3qd0yobu1hicy"
+        },
+        "categories": {
+            "auth": {
+                "faroptoptimizer9b5530a5": {}
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ import {
   PAGE_SELECTOR_OPTIONS,
   SORTABLE_COLUMNS,
   CUSTOM_PREFERENCE_OPTIONS
-} from '../resources/table/table-config.jsx';
+} from '../resources/table/runs-config.jsx';
 const {
   AppLayout,
   BreadcrumbGroup,
@@ -72,7 +72,7 @@ class DetailsTable extends React.Component {
       method: 'GET',
       headers: {'Content-Type':'application/json'}
     }
-    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=list_recipes';
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=list_jobs';
     fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -81,7 +81,7 @@ class DetailsTable extends React.Component {
       },
       })
       .then((response) => response.json())
-      .then((distributions) => this.setState({ distributions: distributions.list_recipes }));
+      .then((distributions) => this.setState({ distributions: distributions.list_jobs }));
 
   }
 
@@ -159,7 +159,7 @@ class DetailsTable extends React.Component {
         }
       >
         <TableFiltering
-          filteringPlaceholder="Search distributions"
+          filteringPlaceholder="Search runs"
           filteringText={this.state.filteringText}
           onFilteringChange={this.onFilteringChange.bind(this)}
         />
@@ -194,15 +194,9 @@ const Header = ({ selectedDistributions, counter }) => {
     <div className="awsui-util-action-stripe">
       <div className="awsui-util-action-stripe-title">
         <h2>
-          Optimizers&nbsp;
+          Runs&nbsp;
           {counter ? <span className="awsui-util-header-counter">{counter}</span> : ''}
         </h2>
-      </div>
-      <div className="awsui-util-action-stripe-group">
-        <Button href="#/cards" text="View details" disabled={!isOnlyOneSelected} />
-        <Button text="Edit" disabled={!isOnlyOneSelected} />
-        <Button text="Delete" disabled={selectedDistributions.length === 0} />
-        <Button href="#/create" variant="primary" text="Create Script" />
       </div>
     </div>
   );
@@ -217,8 +211,8 @@ const Breadcrumbs = () => (
         href: '#/'
       },
       {
-        text: 'Reciepes',
-        href: '#/table'
+        text: 'Jobs',
+        href: '#/runs'
       }
     ]}
   />

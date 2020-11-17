@@ -4,26 +4,12 @@ var submitDisabled = false;
 export const COLUMN_DEFINITIONS = [
   {
     id: 'id',
-    header: () => 'Reciepe ID',
+    header: () => 'Job ID',
     cell: item => (
       <div>
-        <a href={`#/runs`}>{item.recipeid}</a>
+        <a href={`#/cards`}>{item.jobid}</a>
       </div>
     ),
-    allowLineWrap: true
-  },
-  {
-    id: 'contributor',
-    header: () => 'Contributor',
-    cell: item => 'FarOpt Library',
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
-    id: 'description',
-    header: () => 'Description',
-    cell: item => item.description,
-    minWidth: '100px',
     allowLineWrap: true
   },
   {
@@ -37,13 +23,6 @@ export const COLUMN_DEFINITIONS = [
     id: 'path',
     header: () => 'Path',
     cell: item => item.path,
-    minWidth: '100px',
-    allowLineWrap: true
-  },
-  {
-    id: 'action',
-    header: () => 'Action',
-    cell: item => (<Button text="Run" variant="primary" onClick={() => { handleRun(item.recipeid) }}/>),
     minWidth: '100px',
     allowLineWrap: true
   }
@@ -82,25 +61,6 @@ export const CONTENT_SELECTOR_OPTIONS = [
     label: 'Main distribution properties',
     options: [
       { id: 'id', label: 'Distribution ID', editable: false, visible: true },
-      { id: 'domain', label: 'Domain name', editable: true, visible: true },
-      {
-        id: 'contributor',
-        label: 'Contributor',
-        editable: true,
-        visible: true
-      },
-      {
-        id: 'priceClass',
-        label: 'Price class',
-        editable: true,
-        visible: false
-      },
-      {
-        id: 'description',
-        label: 'Description',
-        editable: true,
-        visible: true
-      },
       {
         id: 'bucket',
         label: 'Bucket',
@@ -111,12 +71,6 @@ export const CONTENT_SELECTOR_OPTIONS = [
         id: 'path',
         label: 'Path',
         editable: true,
-        visible: true
-      },
-      {
-        id: 'action',
-        label: 'Action',
-        editable: false,
         visible: true
       }
     ]
