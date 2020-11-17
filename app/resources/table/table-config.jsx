@@ -26,6 +26,20 @@ export const COLUMN_DEFINITIONS = [
     allowLineWrap: true
   },
   {
+    id: 'bucket',
+    header: () => 'Bucket',
+    cell: item => item.bucket,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
+    id: 'path',
+    header: () => 'Path',
+    cell: item => item.path,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
     id: 'action',
     header: () => 'Action',
     cell: item => (<Button text="Run" variant="primary" onClick={() => { handleRun(item.recipeid) }}/>),
@@ -82,6 +96,18 @@ export const CONTENT_SELECTOR_OPTIONS = [
       {
         id: 'description',
         label: 'Description',
+        editable: true,
+        visible: true
+      },
+      {
+        id: 'bucket',
+        label: 'Bucket',
+        editable: true,
+        visible: true
+      },
+      {
+        id: 'path',
+        label: 'Path',
         editable: true,
         visible: true
       },
