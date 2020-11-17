@@ -1,22 +1,5 @@
 {
-	"api": {
-		"createReciepe": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "createReciepe",
-							"apiKeyExpirationDays": "365"
-						}
-					}
-				}
-			}
-		}
-	},
+	"api": {},
 	"auth": {
 		"faroptoptimizer9b5530a5": {
 			"service": "Cognito",

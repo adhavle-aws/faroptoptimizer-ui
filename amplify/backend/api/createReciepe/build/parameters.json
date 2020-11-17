@@ -1,8 +1,0 @@
-{
-    "CreateAPIKey": 1,
-    "AppSyncApiName": "createReciepe",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": "false",
-    "S3DeploymentBucket": "amplify-faroptoptimizer-dev-13535-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/bca20dedc6e3cdb1a98e51fc80b70916f7e9cf65"
-}
