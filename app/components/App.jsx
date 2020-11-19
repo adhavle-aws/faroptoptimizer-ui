@@ -16,6 +16,7 @@ import CreateForm from './CreateForm.jsx';
 import TableView from './Table.jsx';
 import Cards from './MyCards.jsx';
 import Runs from './Runs.jsx';
+import Login from './LoginPage.jsx';
 
 // Class App is the "output" generated on every build,
 // it is what you will see on the webpage.
@@ -33,6 +34,7 @@ class App extends React.Component {
         <Route path="/table" component={TableView} />
         <Route path="/cards" component={Cards} />
         <Route path="/runs" component={Runs} />
+        <Route path="/login" component={Login} />
       </div>
     );
   }

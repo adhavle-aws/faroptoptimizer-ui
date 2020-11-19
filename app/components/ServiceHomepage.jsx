@@ -52,14 +52,14 @@ const Content = () => (
 
           <div className="col-xxs-10 offset-xxs-1 col-s-4 offset-s-0 col-l-3 col-xl-2">
             <div className="awsui-util-container awsui-util-mb-n">
-              <h2>Create an Optimization script</h2>
+              <h2>Create an Optimization recipe</h2>
               <FormField stretch={true} label="Delivery method" className="awsui-util-d-b">
                 <Select
                   options={[{ id: '1', label: 'Use a FarOpt Template' },{ id: '2', label: 'Create a Script' },{ id: '3', label: 'Connect to S3' },{ id: '4', label: 'Connect to Git' }]}
                   selectedOption={{ id: '1', label: 'Use a FarOpt Blueprint' }}
                   className="awsui-util-mb-xl"
                 />
-                <Button href="#/create" variant="primary" text="Create Script" />
+                <Button href="#/create" variant="primary" text="Create Recipe" />
               </FormField>
             </div>
           </div>
@@ -119,21 +119,19 @@ const Content = () => (
             <ColumnLayout columns={2} borders="vertical" className="awsui-util-no-gutters">
               <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
                 <div className="awsui-util-ph-l awsui-util-mb-m">
-                  <h3>Configure multiple origins</h3>
+                  <h3>Run Commerical Solvers at Scale</h3>
                   <p>
-                    Configure multiple origin servers and multiple cache behaviors based on URL path patterns on your
-                    website. Use AWS origins such as Amazon S3 or Elastic Load Balancing, and add your own custom
-                    origins to the mix.
+                    Configure and run commercial solvers without having to worry about provisioning underlying infrastructure and benefiting from pay as you go model.
                   </p>
                   <a href="javascript:void(0)">
                     Learn more <Icon name="external" />
                   </a>
                 </div>
                 <div className="awsui-util-ph-l awsui-util-mb-m">
-                  <h3>Deliver streaming video</h3>
+                  <h3>Create, Colloborate and Mainatin Solver Library</h3>
                   <p>
-                    Use FarOpt to deliver on-demand video without the need to set up or operate any media servers.
-                    FarOpt supports multiple protocols for media streaming.
+                    Use FarOpt to create new recipes, collabarate with teams to create recipes, enable role based access to recipes and maintain 
+                    a library of resources and recipes for faster analysis.
                   </p>
                   <a href="javascript:void(0)">
                     Learn more <Icon name="external" />
@@ -159,9 +157,9 @@ const Content = () => (
                 </div>
                 <div className="awsui-util-ph-l awsui-util-mb-m">
                   <h3>
-                    <a>Amazon Route 53</a>
+                    <a>AWS Fagate</a>
                   </h3>
-                  <p>Use Amazon Route 53 to route DNS queries for your domain name to your FarOpt distribution.</p>
+                  <p>Use AWS Fargate, Lambda for running your FarOpt recipes.</p>
                 </div>
               </div>
             </ColumnLayout>
