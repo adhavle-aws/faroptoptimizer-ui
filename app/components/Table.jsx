@@ -66,7 +66,7 @@ class DetailsTable extends React.Component {
   }
 
   componentDidMount() {
-    new DataProvider().getData('reciepes', distributions => this.setState({ distributions: distributions }));
+    //new DataProvider().getData('reciepes', distributions => this.setState({ distributions: distributions }));
     const headers = { 
       crossDomain:true,
       method: 'GET',

@@ -1,5 +1,4 @@
-const { Icon, Button } = window['AWS-UI-Components-React'];
-var submitDisabled = false;
+const { Icon, Button, Flash } = window['AWS-UI-Components-React'];
 
 export const COLUMN_DEFINITIONS = [
   {
@@ -15,7 +14,7 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'contributor',
     header: () => 'Contributor',
-    cell: item => 'FarOpt Library',
+    cell: item => item.maintainer,
     minWidth: '100px',
     allowLineWrap: true
   },
@@ -43,14 +42,28 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'action',
     header: () => 'Action',
-    cell: item => (<Button text="Run" variant="primary" onClick={() => { handleRun(item.recipeid) }}/>),
-    minWidth: '100px',
+    cell: item => (<div> <Button text="Run" id = {item.path} variant="primary" onClick={() => { handleRun(item.path, item.code, item.maintainer, item.description) }}/></div>),
+    minWidth: '200px',
     allowLineWrap: true
   }
 ];
 
-function handleRun(recipeId){ 
-    submitDisabled = true
+const FlashMessage = () => <Flash type="success" content="Resource created successfully" dismissible={true} />;
+function handleRun(path, code, maintainer, description){ 
+    
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstParam: code,
+      description: description,
+      maintainer:maintainer
+    })})
+    /*
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_recipe';
     fetch(apiUrl, {
     method: 'POST',
@@ -59,9 +72,10 @@ function handleRun(recipeId){
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      recipeName: recipeId
+      recipeName: path,
+      code: code
     })})
-    
+  */
 }
 
 
