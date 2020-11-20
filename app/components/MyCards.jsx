@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FarOptNavigation from './FarOptSecondary.jsx';
+import FarOptNavigation from './FarOptNavigation.jsx';
 
 const { AppLayout, SideNavigation } = window['AWS-UI-Components-React'];
 
@@ -49,7 +49,7 @@ export default class MyCards extends React.Component {
         </div>
       </div>
     </div>
-
+    
     <div className="awsui-util-m-xxl awsui-util-pv-l awsui-util-ph-l">
       <h1>Architecture</h1>
       <div className="awsui-util-container">
@@ -58,7 +58,7 @@ export default class MyCards extends React.Component {
           <img src="./images/FarOpt.jpeg" className="intro-screenshot" alt="screenshot" width="100%"/>
         </div>
       </div>
-
+      
       <h1>Optimization Reciepe Details</h1>
       <div className="awsui-util-container">
         <div className="awsui-util-container-header">
