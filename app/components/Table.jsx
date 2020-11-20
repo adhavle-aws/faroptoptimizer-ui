@@ -8,18 +8,10 @@ guidelines:
 https://polaris.corp.amazon.com/getting_started/development/integration/
 ************************************************************************/
 import React from 'react';
-import DataProvider from '../resources/data-provider';
-import ServiceNavigation from './ServiceNavigation.jsx';
+
 import FarOptNavigation from './FarOptNavigation.jsx';
 
 
-import {
-  COLUMN_DEFINITIONS,
-  CONTENT_SELECTOR_OPTIONS,
-  PAGE_SELECTOR_OPTIONS,
-  SORTABLE_COLUMNS,
-  CUSTOM_PREFERENCE_OPTIONS
-} from '../resources/table/table-config.jsx';
 const {
   AppLayout,
   BreadcrumbGroup,
@@ -58,12 +50,15 @@ class DetailsTable extends React.Component {
     this.state = {
       selectedDistributions: [],
       distributions: [],
-      submitDisabled:true,
+      btnText:"Run",
+      disabled:false,
       pageSize: 30,
       filteringText: ''
     };
     this.handleRun = this.handleRun.bind(this);
+    this.handleRecipeRun = this.handleRecipeRun.bind(this);
   }
+  
 
   componentDidMount() {
     //new DataProvider().getData('reciepes', distributions => this.setState({ distributions: distributions }));
@@ -84,6 +79,8 @@ class DetailsTable extends React.Component {
       .then((distributions) => this.setState({ distributions: distributions.list_recipes }));
 
   }
+
+  
 
   // Keeps track of how many distributions are selected
   headerCounter(selectedDistributions, distributions) {
@@ -113,6 +110,35 @@ class DetailsTable extends React.Component {
     });
   }
 
+  handleRecipeRun(path, code, maintainer, description){ 
+    document.getElementById(path).textContent = 'Job Submitted'
+    console.log(document.getElementById(path))
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstParam: code,
+      description: description,
+      maintainer:maintainer
+    })})
+    /*
+    const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_recipe';
+    fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      recipeName: path,
+      code: code
+    })})
+  */
+}
   handleRun(e){ 
     this.setState({ value: '' });
     if(this.state.code === undefined){
@@ -137,7 +163,54 @@ class DetailsTable extends React.Component {
   render() {
     return (
       <Table
-        columnDefinitions={COLUMN_DEFINITIONS}
+        columnDefinitions={[
+          {
+            id: 'id',
+            header: () => 'Reciepe ID',
+            cell: item => (
+              <div>
+                <a href={`#/runs`}>{item.recipeid}</a>
+              </div>
+            ),
+            minWidth: '150px',
+            allowLineWrap: true
+          },
+          {
+            id: 'contributor',
+            header: () => 'Contributor',
+            cell: item => item.maintainer,
+            minWidth: '100px',
+            allowLineWrap: true
+          },
+          {
+            id: 'description',
+            header: () => 'Description',
+            cell: item => item.description,
+            minWidth: '100px',
+            allowLineWrap: true
+          },
+          {
+            id: 'bucket',
+            header: () => 'Bucket',
+            cell: item => item.bucket,
+            minWidth: '100px',
+            allowLineWrap: true
+          },
+          {
+            id: 'path',
+            header: () => 'Path',
+            cell: item => item.path,
+            minWidth: '100px',
+            allowLineWrap: true
+          },
+          {
+            id: 'action',
+            header: () => 'Action',
+            cell: item => (<Button id={item.path} disabled={this.state.disabled} variant="primary" onClick={() => { this.handleRecipeRun(item.path, item.code, item.maintainer, item.description) }}>{this.state.btnText}</Button>),
+            minWidth: '100px',
+            allowLineWrap: true
+          }]
+        }
         items={this.state.distributions}
         buttonValue = {true}
         header={
@@ -165,10 +238,7 @@ class DetailsTable extends React.Component {
         />
         <TablePagination onPaginationChange={this.onPaginationChange.bind(this)} pageSize={this.state.pageSize} />
         <TableSorting sortableColumns={SORTABLE_COLUMNS} />
-        <TableSelection
-          selectedItems={this.state.selectedDistributions}
-          onSelectionChange={evt => this.setState({ selectedDistributions: evt.detail.selectedItems })}
-        />
+        
         <TablePreferences title="Preferences" confirmLabel="Confirm" cancelLabel="Cancel">
           <TablePageSizeSelector title="Page size" options={PAGE_SELECTOR_OPTIONS} />
           <TableWrapLines label="Wrap lines" description="Check to see all the text and wrap the lines" value={false} />
@@ -184,6 +254,7 @@ class DetailsTable extends React.Component {
       </Table>
     );
   }
+  
 }
 
 // Table header content, shows how many distributions are selected and contains the action stripe
@@ -199,10 +270,7 @@ const Header = ({ selectedDistributions, counter }) => {
         </h2>
       </div>
       <div className="awsui-util-action-stripe-group">
-        <Button href="#/cards" text="View details" disabled={!isOnlyOneSelected} />
-        <Button text="Edit" disabled={!isOnlyOneSelected} />
-        <Button text="Delete" disabled={selectedDistributions.length === 0} />
-        <Button href="#/create" variant="primary" text="Create Script" />
+        <Button href="#/create" variant="primary" text="Create Recipe" />
       </div>
     </div>
   );
@@ -224,8 +292,6 @@ const Breadcrumbs = () => (
   />
 );
 
-// Flash message content
-const FlashMessage = () => <Flash type="success" content="Resource created successfully" dismissible={true} />;
 
 // Help (right) panel content
 const Tools = [
@@ -252,3 +318,124 @@ const Tools = [
     </ul>
   </div>
 ];
+
+const COLUMN_DEFINITIONS = [
+  {
+    id: 'id',
+    header: () => 'Reciepe ID',
+    cell: item => (
+      <div>
+        <a href={`#/runs`}>{item.recipeid}</a>
+      </div>
+    ),
+    allowLineWrap: true
+  },
+  {
+    id: 'contributor',
+    header: () => 'Contributor',
+    cell: item => item.maintainer,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
+    id: 'description',
+    header: () => 'Description',
+    cell: item => item.description,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
+    id: 'bucket',
+    header: () => 'Bucket',
+    cell: item => item.bucket,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
+    id: 'path',
+    header: () => 'Path',
+    cell: item => item.path,
+    minWidth: '100px',
+    allowLineWrap: true
+  },
+  {
+    id: 'action',
+    header: () => 'Action',
+    cell: item => (<div> <Button text="Run" id = {item.path} variant="primary" onClick={() => { handleRecipeRun(item.path, item.code, item.maintainer, item.description) }}/></div>),
+    minWidth: '200px',
+    allowLineWrap: true
+  }
+];
+
+const FlashMessage = () => <Flash type="success" content="Resource created successfully" dismissible={true} />;
+
+
+
+
+const SORTABLE_COLUMNS = [
+  { id: 'id', field: 'id' },
+  { id: 'description', field: 'description' },
+  { id: 'domain', field: 'domain' },
+  { id: 'priceClass', field: 'priceClass' },
+  { id: 'sslCertificate', field: 'sslCertificate' },
+  { id: 'origin', field: 'origin' },
+  { id: 'status', field: 'status' },
+  { id: 'state', field: 'state' },
+  { id: 'logging', field: 'logging' }
+];
+
+const CONTENT_SELECTOR_OPTIONS = [
+  {
+    label: 'Main distribution properties',
+    options: [
+      { id: 'id', label: 'Distribution ID', editable: false, visible: true },
+      { id: 'domain', label: 'Domain name', editable: true, visible: true },
+      {
+        id: 'contributor',
+        label: 'Contributor',
+        editable: true,
+        visible: true
+      },
+      {
+        id: 'priceClass',
+        label: 'Price class',
+        editable: true,
+        visible: false
+      },
+      {
+        id: 'description',
+        label: 'Description',
+        editable: true,
+        visible: true
+      },
+      {
+        id: 'bucket',
+        label: 'Bucket',
+        editable: true,
+        visible: false
+      },
+      {
+        id: 'path',
+        label: 'Path',
+        editable: true,
+        visible: false
+      },
+      {
+        id: 'action',
+        label: 'Action',
+        editable: false,
+        visible: true
+      }
+    ]
+  }
+];
+
+const PAGE_SELECTOR_OPTIONS = [
+  { value: 10, label: '10 Distributions' },
+  { value: 30, label: '30 Distributions' },
+  { value: 50, label: '50 Distributions' }
+];
+
+const CUSTOM_PREFERENCE_OPTIONS = [{ value: 'table', label: 'Table' }, { value: 'cards', label: 'Cards' }];
+
+

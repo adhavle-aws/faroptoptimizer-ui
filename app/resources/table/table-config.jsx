@@ -49,8 +49,8 @@ export const COLUMN_DEFINITIONS = [
 ];
 
 const FlashMessage = () => <Flash type="success" content="Resource created successfully" dismissible={true} />;
+
 function handleRun(path, code, maintainer, description){ 
-    
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
     fetch(apiUrl, {
     method: 'POST',
