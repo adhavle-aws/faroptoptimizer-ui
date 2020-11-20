@@ -5,7 +5,7 @@ export const COLUMN_DEFINITIONS = [
   {
     id: 'id',
     header: () => 'Job ID',
-    cell: item => item.jobid,
+    cell: item => item.recipeId,
     allowLineWrap: true
   },
   {
@@ -19,6 +19,20 @@ export const COLUMN_DEFINITIONS = [
     id: 'path',
     header: () => 'Path',
     cell: item => item.path,
+    minWidth: '300px',
+    allowLineWrap: true
+  },
+  {
+    id: 'submittedOn',
+    header: () => 'Submitted On',
+    cell: item => item.submittedOn,
+    minWidth: '300px',
+    allowLineWrap: true
+  },
+  {
+    id: 'desc',
+    header: () => 'Description',
+    cell: item => item.description,
     minWidth: '300px',
     allowLineWrap: true
   }
@@ -61,11 +75,23 @@ export const CONTENT_SELECTOR_OPTIONS = [
         id: 'bucket',
         label: 'Bucket',
         editable: true,
-        visible: true
+        visible: false
       },
       {
         id: 'path',
         label: 'Path',
+        editable: true,
+        visible: false
+      },
+      {
+        id: 'desc',
+        label: 'Description',
+        editable: true,
+        visible: true
+      },
+      {
+        id: 'submittedOn',
+        label: 'Submitted On',
         editable: true,
         visible: true
       }

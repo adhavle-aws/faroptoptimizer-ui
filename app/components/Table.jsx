@@ -112,7 +112,6 @@ class DetailsTable extends React.Component {
 
   handleRecipeRun(path, code, maintainer, description){ 
     document.getElementById(path).textContent = 'Job Submitted'
-    console.log(document.getElementById(path))
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev/faroptsdkfunction?method=run_s3_job';
     fetch(apiUrl, {
     method: 'POST',
@@ -206,7 +205,7 @@ class DetailsTable extends React.Component {
           {
             id: 'action',
             header: () => 'Action',
-            cell: item => (<Button id={item.path} disabled={this.state.disabled} variant="primary" onClick={() => { this.handleRecipeRun(item.path, item.code, item.maintainer, item.description) }}>{this.state.btnText}</Button>),
+            cell: item => (<Button id={item.path} disabled={false} variant="primary" onClick={() => { this.handleRecipeRun(item.path, item.code, item.maintainer, item.description) }}>{this.state.btnText}</Button>),
             minWidth: '100px',
             allowLineWrap: true
           }]

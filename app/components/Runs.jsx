@@ -165,10 +165,6 @@ class DetailsTable extends React.Component {
         />
         <TablePagination onPaginationChange={this.onPaginationChange.bind(this)} pageSize={this.state.pageSize} />
         <TableSorting sortableColumns={SORTABLE_COLUMNS} />
-        <TableSelection
-          selectedItems={this.state.selectedDistributions}
-          onSelectionChange={evt => this.setState({ selectedDistributions: evt.detail.selectedItems })}
-        />
         <TablePreferences title="Preferences" confirmLabel="Confirm" cancelLabel="Cancel">
           <TablePageSizeSelector title="Page size" options={PAGE_SELECTOR_OPTIONS} />
           <TableWrapLines label="Wrap lines" description="Check to see all the text and wrap the lines" value={false} />
