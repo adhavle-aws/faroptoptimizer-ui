@@ -18,7 +18,6 @@ export default class LoginPage extends React.Component {
     }
     
     authenticator(username, password){
-        console.log(username, ' ', password)
         const headers = { 
             headers: {'Content-Type':'application/json'}
           }  
@@ -45,15 +44,12 @@ export default class LoginPage extends React.Component {
         const { dispatch } = this.props;
         if (username && password) {
         this.authenticator(username, password).then((response) => {
-            console.log(response)
             if(response && response.authenticate == 'true'){
-                console.log("Auth ", response)
                 localStorage.setItem("token", true)
             }
           })
           .then(steps => {
-             console.log("here ")
-             window.location.href = "/#";
+            window.location.href = "/#";
           });
         }
     }
