@@ -16,6 +16,21 @@ export default class LoginPage extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
+    authenticator(username, password){
+        console.log(username, ' ', password)
+        const headers = { 
+            headers: {'Content-Type':'application/json'}
+          }  
+        // TODO Authenticate via POST   
+        const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=authenticate&username='+username+'&password='+password;
+        return fetch(apiUrl, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+            }).then((response) => response.json())
+      };
 
     handleChange(e) {
         const { name, value } = e.target;
@@ -23,21 +38,28 @@ export default class LoginPage extends React.Component {
     }
 
     handleSubmit(e) {
-        
         e.preventDefault();
-        
+        var response ={};
         this.setState({ submitted: true });
         const { username, password } = this.state;
         const { dispatch } = this.props;
         if (username && password) {
-            localStorage.setItem('token',true)
+        this.authenticator(username, password).then((response) => {
+            console.log(response)
+            if(response && response.authenticate == 'true'){
+                console.log("Auth ", response)
+                localStorage.setItem("token", true)
+            }
+          })
+          .then(steps => {
+             console.log("here ")
+             window.location.href = "/#";
+          });
         }
     }
     
     render() {
-        if (localStorage.getItem("token")) {
-            return <Redirect from="/login" to="/#"  />; 
-          }
+        
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
