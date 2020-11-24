@@ -275,6 +275,9 @@ class ContentDeliveryPanel extends React.Component {
   }
 
   render() {
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
       <FormSection header="Script creation options">
