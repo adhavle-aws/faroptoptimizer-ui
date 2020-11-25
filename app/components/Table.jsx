@@ -170,7 +170,7 @@ class DetailsTable extends React.Component {
             header: () => 'Reciepe ID',
             cell: item => (
               <div>
-                <a href={`#/runs`}>{item.recipeid}</a>
+                <a href={`#/runs/id=`+item.description}>{item.recipeid}</a>
               </div>
             ),
             minWidth: '150px',
@@ -253,6 +253,7 @@ class DetailsTable extends React.Component {
           <TableContentSelector title="Select visible columns" options={CONTENT_SELECTOR_OPTIONS} />
         </TablePreferences>
       </Table>
+      
       <br/>
       <iframe id="cloudwatch" hidden={true} width="100%" height="700px" src="https://cloudwatch.amazonaws.com/dashboard.html?dashboard=FarOpt-Dashboard&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTU5MTQ2OTQ5OTc0MyIsIlUiOiJ1cy1lYXN0LTFfYVUzSnFKcTBxIiwiQyI6IjY4OHIzZWdkNGYxOTVkcTlsM2wwcGZiYnM3IiwiSSI6InVzLWVhc3QtMTo0NDIzOTc0My1iNjY2LTRmMTMtOWIzNS00NWU5ZGRmNzI5MjQiLCJNIjoiUHVibGljIn0%3D"></iframe>
       </div>

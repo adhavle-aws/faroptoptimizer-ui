@@ -17,18 +17,18 @@ class ServiceNavigation extends React.Component {
   render() {
     return (
       <SideNavigation
-        header={{ text: 'Amazon FarOpt', href: '#/' }}
+        header={{ text: 'Amazon FarOpt', href: '#/home' }}
         items={[
           {
             type: 'section',
             text: 'Components',
             expanded: true,
             items: [
-          { type: 'link', text: 'What is FarOpt', href: '#/' },
+          { type: 'link', text: 'What is FarOpt', href: '#/home' },
           { type: 'link', text: 'Optimizer Library', href: '#/table' },
           { type: 'link', text: 'Create Script', href: '#/create' },
-          { type: 'link', text: 'Job Run History', href: '#/runs' },
-          { type: 'link', text: 'Logout', href: '#/login' }
+          { type: 'link', text: 'Job Run History', href: '#/runs/id=' },
+          { type: 'link', text: 'Logout', href: '#/' }
         ]
       }
     ]}

@@ -12,7 +12,6 @@ import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import FarOptNavigation from './FarOptNavigation.jsx';
 
-
 import {
   COLUMN_DEFINITIONS,
   CONTENT_SELECTOR_OPTIONS,
@@ -20,6 +19,8 @@ import {
   SORTABLE_COLUMNS,
   CUSTOM_PREFERENCE_OPTIONS
 } from '../resources/table/runs-config.jsx';
+
+
 const {
   AppLayout,
   BreadcrumbGroup,
@@ -55,16 +56,18 @@ export default class TableView extends React.Component {
 class DetailsTable extends React.Component {
   constructor(props) {
     super(props);
+    const queryString = window.location.hash;
     this.state = {
       selectedDistributions: [],
       distributions: [],
       submitDisabled:true,
       pageSize: 30,
-      filteringText: ''
+      filteringText: decodeURI(queryString.substring(queryString.indexOf('=') + 1))
     };
     this.handleRun = this.handleRun.bind(this);
+    this.showLog = this.showLog.bind(this);
   }
-
+  
   componentDidMount() {
     new DataProvider().getData('reciepes', distributions => this.setState({ distributions: distributions }));
     const headers = { 
@@ -72,6 +75,7 @@ class DetailsTable extends React.Component {
       method: 'GET',
       headers: {'Content-Type':'application/json'}
     }
+    
     const apiUrl = 'https://5u2kwyr548.execute-api.us-east-1.amazonaws.com/dev?method=list_jobs';
     fetch(apiUrl, {
       method: 'GET',
@@ -112,7 +116,13 @@ class DetailsTable extends React.Component {
       filteringText: ''
     });
   }
-
+  showLog(){
+    if(document.getElementById('logs').hidden == false){
+      document.getElementById('logs').hidden = true
+    }else{
+      document.getElementById('logs').hidden = false
+    }
+  }
   handleRun(e){ 
     this.setState({ value: '' });
     if(this.state.code === undefined){
@@ -137,7 +147,7 @@ class DetailsTable extends React.Component {
   render() {
     return (
       <div>
-        <iframe width="100%" height="700px" src="https://cloudwatch.amazonaws.com/dashboard.html?dashboard=FarOpt-Dashboard&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTU5MTQ2OTQ5OTc0MyIsIlUiOiJ1cy1lYXN0LTFfYVUzSnFKcTBxIiwiQyI6IjY4OHIzZWdkNGYxOTVkcTlsM2wwcGZiYnM3IiwiSSI6InVzLWVhc3QtMTo0NDIzOTc0My1iNjY2LTRmMTMtOWIzNS00NWU5ZGRmNzI5MjQiLCJNIjoiUHVibGljIn0%3D"></iframe>
+      
       <Table
         columnDefinitions={COLUMN_DEFINITIONS}
         items={this.state.distributions}
@@ -180,6 +190,10 @@ class DetailsTable extends React.Component {
           <TableContentSelector title="Select visible columns" options={CONTENT_SELECTOR_OPTIONS} />
         </TablePreferences>
       </Table>
+      <br/>
+        <Button id="logsBtn" variant="primary" text="Show/Hide Logs" onClick={this.showLog}></Button>
+      <br/>  <br/>
+        <iframe id="logs" hidden="true" width="100%" height="700px" src="https://cloudwatch.amazonaws.com/dashboard.html?dashboard=FarOpt-Dashboard&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTU5MTQ2OTQ5OTc0MyIsIlUiOiJ1cy1lYXN0LTFfYVUzSnFKcTBxIiwiQyI6IjY4OHIzZWdkNGYxOTVkcTlsM2wwcGZiYnM3IiwiSSI6InVzLWVhc3QtMTo0NDIzOTc0My1iNjY2LTRmMTMtOWIzNS00NWU5ZGRmNzI5MjQiLCJNIjoiUHVibGljIn0%3D"></iframe>
       </div>
     );
   }

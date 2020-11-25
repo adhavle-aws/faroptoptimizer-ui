@@ -31,14 +31,14 @@ class App extends React.Component {
 
       <div>
           <Switch>
-            <ProtectedRoute exact path="/" component={ServiceHomepage} />
+            <ProtectedRoute exact path="/home" component={ServiceHomepage} />
             <ProtectedRoute path="/basic" component={Basic} />
             <ProtectedRoute exact path="/service-home" component={Landing} />
             <ProtectedRoute exact path="/create" component={CreateForm} />
             <ProtectedRoute exact path="/table" component={TableView} />
             <ProtectedRoute exact path="/cards" component={Cards} />
-            <ProtectedRoute exact path="/runs" component={Runs} />
-            <Route exact path="/login" component={Login} />
+            <ProtectedRoute exact path="/runs/:id" component={Runs} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/logout" component={Logout} />
             </Switch>
       </div>

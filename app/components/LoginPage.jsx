@@ -49,7 +49,7 @@ export default class LoginPage extends React.Component {
             }
           })
           .then(steps => {
-            window.location.href = "/#";
+            window.location.href = "/#/home";
           });
         }
     }
