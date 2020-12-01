@@ -56,14 +56,9 @@ function handleRun(recipeId){
 
 export const SORTABLE_COLUMNS = [
   { id: 'id', field: 'id' },
-  { id: 'description', field: 'description' },
-  { id: 'domain', field: 'domain' },
-  { id: 'priceClass', field: 'priceClass' },
-  { id: 'sslCertificate', field: 'sslCertificate' },
-  { id: 'origin', field: 'origin' },
-  { id: 'status', field: 'status' },
-  { id: 'state', field: 'state' },
-  { id: 'logging', field: 'logging' }
+  { id: 'submittedOn', field: 'submittedOn' },
+  { id: 'path', field: 'path' },
+  { id: 'desc', field: 'desc' }
 ];
 
 export const CONTENT_SELECTOR_OPTIONS = [
@@ -80,19 +75,19 @@ export const CONTENT_SELECTOR_OPTIONS = [
       {
         id: 'path',
         label: 'Path',
-        editable: true,
+        editable: false,
         visible: false
       },
       {
         id: 'desc',
         label: 'Description',
-        editable: true,
+        editable: false,
         visible: true
       },
       {
         id: 'submittedOn',
         label: 'Submitted On',
-        editable: true,
+        editable: false,
         visible: true
       }
     ]
