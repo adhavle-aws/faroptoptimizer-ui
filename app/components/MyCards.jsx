@@ -53,10 +53,13 @@ export default class MyCards extends React.Component {
     <div class="card-deck">
       <div class="w-100 d-none d-sm-block d-md-none"></div>
         <div class="card mb-4">
+           {/**
         <div style={{minHeight: "160px", paddingTop:"15px"}}>
           <img class="card-img-top img-fluid" height="100px" width="280px" src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_f0c504f53b83341ad10627bb75818539/gurobi-optimizer.png" alt="Card image cap"/>
           </div>
+           
           <hr/>
+          */}
           <div class="card-body">
             <h4 class="card-title">Gurobi</h4>
             <p class="card-text">Gurobi builds and supports the leading math programming solvers available for all major problem types.</p>
@@ -83,10 +86,12 @@ export default class MyCards extends React.Component {
         </div>
         <div class="w-100 d-none d-sm-block d-md-none"></div>
         <div class="card mb-4">
+          {/**
           <div style={{minHeight: "160px"}}>
           <img class="card-img-top img-fluid" style={{paddingTop:"50px"}} height="500px" width="280px" src="https://farao-community.github.io/assets/img/logos/DuoN35ZXgAAKzC_.jpg" alt="Card image cap"/>
           </div>
           <hr/>
+          **/}
           <div class="card-body">
             <h4 class="card-title">OR-Tools</h4>
             <p class="card-text">OR-Tools is an open source software suite for optimization, tuned for tackling the world's toughest problems in vehicle routing, flows, integer and linear programming, and constraint programming.</p>
@@ -113,10 +118,12 @@ export default class MyCards extends React.Component {
         </div>
         <div class="w-100 d-none d-sm-block d-md-none"></div>
         <div class="card mb-4">
+          {/**
           <div style={{maxHeight: "180px" , overflow:"hidden"}}>
           <img class="card-img-top img-fluid" height="500px" width="280px" src="https://www.fico.com/sites/default/files/styles/lg/public/2020-09/abstract-grey_1.jpg?itok=-7EhD5OO" alt="Card image cap"/>
           </div>
           <hr/>
+          **/}
           <div class="card-body">
             <h4 class="card-title">FICO® Xpress Solver</h4>
             <p class="card-text">FICO® Xpress Solver provides a comprehensive suite of high-performance nonlinear problem solvers that give businesses the power to solve more complex general nonlinear problems quickly and accurately.</p>
@@ -143,10 +150,12 @@ export default class MyCards extends React.Component {
         </div>
         <div class="w-100 d-none d-sm-block d-md-none"></div>
         <div class="card mb-4">
+          {/**
           <div style={{maxHeight: "165px" , overflow:"hidden"}}>
            <img class="card-img-top img-fluid" height="500px" width="280px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Swd8YNIH00X92KZKFNwRBT29cJtE1a9Sxw&amp;usqp=CAU" alt="Card image cap"/>
           </div>
           <hr/>
+          **/}
           <div class="card-body">
             <h4 class="card-title">CPLEX Optimizer</h4>
             <p class="card-text">High-performance mathematical programming solver for linear programming, mixed-integer programming and quadratic programming.</p>
