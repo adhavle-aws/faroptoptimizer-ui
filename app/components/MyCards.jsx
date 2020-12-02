@@ -80,7 +80,7 @@ export default class MyCards extends React.Component {
                 </td>
               </tr>
             </table>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted">Last used {Math.ceil(Math.random() * (10 - 2) + 2)} mins ago</small></p>
           </div>
         </div>
       <div class="w-100 d-none d-sm-block d-md-none"></div>
@@ -113,7 +113,7 @@ export default class MyCards extends React.Component {
                 </td>
               </tr>
             </table>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted">Last used {Math.ceil(Math.random() * (20 - 2) + 2)} mins ago</small></p>
           </div>
         </div>
         <div class="w-100 d-none d-sm-block d-md-none"></div>
@@ -145,7 +145,7 @@ export default class MyCards extends React.Component {
                 </td>
               </tr>
             </table>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted">Last used {Math.ceil(Math.random() * (30 - 2) + 2)} mins ago</small></p>
           </div>
         </div>
         <div class="w-100 d-none d-sm-block d-md-none"></div>
@@ -177,7 +177,7 @@ export default class MyCards extends React.Component {
                 </td>
               </tr>
             </table>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted">Last used {Math.ceil(Math.random() * (30 - 2) + 2)} mins ago</small></p>
           </div>
         </div>
     </div>
