@@ -130,7 +130,7 @@ class DetailsTable extends React.Component {
                 </div>
               </div>
               <p>
-                Collaborate with experts to accelerate the development of quantum solutions.   
+                Collaborate with experts to accelerate the development of optimization solutions.   
               </p>
             </div>
           </div>
