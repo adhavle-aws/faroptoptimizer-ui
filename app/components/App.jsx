@@ -19,6 +19,7 @@ import Runs from './Runs.jsx';
 import Login from './LoginPage.jsx';
 import Logout from './Logout.jsx';
 import CostExplorer from './CostExplorer';
+import farOptLabs from './FarOptLabs';
 import ProtectedRoute from './ProtectedRoute';
 
 // Class App is the "output" generated on every build,
@@ -40,6 +41,7 @@ class App extends React.Component {
             <ProtectedRoute exact path="/cards" component={Cards} />
             <ProtectedRoute exact path="/runs/:id" component={Runs} />
             <ProtectedRoute exact path="/cost" component={CostExplorer} />
+            <ProtectedRoute exact path="/farOptSol" component={farOptLabs} />
             <Route exact path="/" component={Login} />
             <Route exact path="/logout" component={Logout} />
             </Switch>

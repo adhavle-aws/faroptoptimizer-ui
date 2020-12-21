@@ -29,6 +29,7 @@ class ServiceNavigation extends React.Component {
           { type: 'link', text: 'Optimizer Library', href: '#/table' },
           { type: 'link', text: 'Create Script', href: '#/create' },
           { type: 'link', text: 'Job Run History', href: '#/runs/id=' },
+          { type: 'link', text: 'Faropt Solutions Lab', href: '#/farOptSol' },
           
           { type: 'link', text: 'Logout', href: '#/' }
         ]
