@@ -77,6 +77,6 @@ export const DELIVERY_METHOD = [
   {
     label: 'Use a template',
     value: 'template',
-    description: 'Use a FarOpt blueprint to quickly get started'
+    description: 'Use a AWS Optimize blueprint to quickly get started'
   }
 ];

@@ -54,12 +54,12 @@ const Content = () => <div> Add tiles here </div>;
 const Tools = (
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
-      <h2>FarOpt</h2>
+      <h2>AWS Optimize</h2>
     </div>
     <ul className="awsui-list-unstyled">
       <li>
         <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html">
-          What is Amazon FarOpt?
+          What is AWS Optimize?
         </a>
       </li>
       <li>

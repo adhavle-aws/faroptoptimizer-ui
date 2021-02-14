@@ -87,7 +87,7 @@ const Content = () => (
 
 const CustomNavigation = () => (
   <SideNavigation
-    header={{ text: 'Amazon FarOpt', href: '#/' }}
+    header={{ text: 'AWS Optimize', href: '#/' }}
     items={[
       { 
         type: 'section',

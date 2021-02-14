@@ -41,7 +41,7 @@ const Content = () => (
           <div className="custom-home__header-title col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6">
             <div className="awsui-text-large">
               <div>
-                <strong>Amazon FarOpt</strong>
+                <strong>AWS Optimize</strong>
               </div>
               <div>fast and reliable numerical optimization on AWS</div>
             </div>
@@ -52,14 +52,14 @@ const Content = () => (
 
           <div className="col-xxs-10 offset-xxs-1 col-s-4 offset-s-0 col-l-3 col-xl-2">
             <div className="awsui-util-container awsui-util-mb-n">
-              <h2>Create an Optimization recipe</h2>
+              <h2>Create an Optimization application</h2>
               <FormField stretch={true} label="Delivery method" className="awsui-util-d-b">
                 <Select
-                  options={[{ id: '1', label: 'Use a FarOpt Template' },{ id: '2', label: 'Create a Script' },{ id: '3', label: 'Connect to S3' },{ id: '4', label: 'Connect to Git' }]}
-                  selectedOption={{ id: '1', label: 'Use a FarOpt Blueprint' }}
+                  options={[{ id: '1', label: 'Use a AWS Optimize Template' },{ id: '2', label: 'Create a Script' },{ id: '3', label: 'Connect to S3' },{ id: '4', label: 'Connect to Git' }]}
+                  selectedOption={{ id: '1', label: 'Use a AWS Optimize Blueprint' }}
                   className="awsui-util-mb-xl"
                 />
-                <Button href="#/create" variant="primary" text="Create Recipe" />
+                <Button href="#/create" variant="primary" text="Create Application" />
               </FormField>
             </div>
           </div>
@@ -130,8 +130,8 @@ const Content = () => (
                 <div className="awsui-util-ph-l awsui-util-mb-m">
                   <h3>Create, Colloborate and Mainatin Solver Library</h3>
                   <p>
-                    Use FarOpt to create new recipes, collabarate with teams to create recipes, enable role based access to recipes and maintain 
-                    a library of resources and recipes for faster analysis.
+                    Use FarOpt to create new application, collabarate with teams to create applications, enable role based access to applications and maintain 
+                    a library of resources and applications for faster analysis.
                   </p>
                   <a href="javascript:void(0)">
                     Learn more <Icon name="external" />
@@ -153,13 +153,13 @@ const Content = () => (
                   <h3>
                     <a>Amazon S3</a>
                   </h3>
-                  <p>Use Amazon S3 to store the content that FarOpt delivers.</p>
+                  <p>Use Amazon S3 to store the content that AWS Optimize delivers.</p>
                 </div>
                 <div className="awsui-util-ph-l awsui-util-mb-m">
                   <h3>
                     <a>AWS Fagate</a>
                   </h3>
-                  <p>Use AWS Fargate, Lambda for running your FarOpt recipes.</p>
+                  <p>Use AWS Fargate, Lambda for running your AWS Optimize applications.</p>
                 </div>
               </div>
             </ColumnLayout>
@@ -200,7 +200,7 @@ const Content = () => (
               <div data-awsui-column-layout-root="true">
                 <div>
                   <a href="http://docs.aws.amazon.com/AmazonFarOpt/latest/DeveloperGuide/Introduction.html">
-                    What is Amazon FarOpt?
+                    What is AWS Optimize?
                   </a>
                 </div>
                 <div>

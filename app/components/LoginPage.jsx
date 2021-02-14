@@ -71,7 +71,7 @@ export default class LoginPage extends React.Component {
                   <div className="custom-home__header-title col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6">
                     <div className="awsui-text-large">
                       <div>
-                        <strong>Amazon FarOpt</strong>
+                        <strong>AWS Optimize</strong>
                       </div>
                       <div>fast and reliable numerical optimization on AWS</div>
                     </div>

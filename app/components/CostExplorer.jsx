@@ -261,7 +261,7 @@ const Tools = [
 const COLUMN_DEFINITIONS = [
   {
     id: 'id',
-    header: () => 'Reciepe ID',
+    header: () => 'Application ID',
     cell: item => (
       <div>
         <a href={`#/runs`}>{item.recipeid}</a>

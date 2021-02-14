@@ -16,14 +16,14 @@ class ServiceNavigation extends React.Component {
   render() {
     return (
       <SideNavigation
-        header={{ text: 'Amazon FarOpt', href: '#/' }}
+        header={{ text: 'AWS Optimize', href: '#/' }}
         items={[
           {
             type: 'section',
             text: 'Components',
             expanded: true,
             items: [
-          { type: 'link', text: 'What is FarOpt', href: '#/' },
+          { type: 'link', text: 'What is AWS Optimize', href: '#/' },
           { type: 'link', text: 'Create Script', href: '#/create' },
           { type: 'link', text: 'CloudWatch', href: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1' },
         ]

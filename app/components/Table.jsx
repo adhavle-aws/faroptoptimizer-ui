@@ -167,7 +167,7 @@ class DetailsTable extends React.Component {
         columnDefinitions={[
           {
             id: 'id',
-            header: () => 'Reciepe ID',
+            header: () => 'Application ID',
             cell: item => (
               <div>
                 <a href={`#/runs/id=`+item.description}>{item.recipeid}</a>
@@ -275,7 +275,7 @@ const Header = ({ selectedDistributions, counter }) => {
         </h2>
       </div>
       <div className="awsui-util-action-stripe-group">
-        <Button href="#/create" variant="primary" text="Create Recipe" />
+        <Button href="#/create" variant="primary" text="Create Application" />
       </div>
     </div>
   );
@@ -286,11 +286,11 @@ const Breadcrumbs = () => (
   <BreadcrumbGroup
     items={[
       {
-        text: 'FarOpt',
+        text: 'AWS Optimization',
         href: '#/'
       },
       {
-        text: 'Reciepes',
+        text: 'Application',
         href: '#/table'
       }
     ]}
@@ -327,7 +327,7 @@ const Tools = [
 const COLUMN_DEFINITIONS = [
   {
     id: 'id',
-    header: () => 'Reciepe ID',
+    header: () => 'Application ID',
     cell: item => (
       <div>
         <a href={`#/runs`}>{item.recipeid}</a>

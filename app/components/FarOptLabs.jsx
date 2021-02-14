@@ -126,7 +126,7 @@ class DetailsTable extends React.Component {
             <div className="custom-home__header-title">
               <div className="awsui-text-large">
                 <div>
-                  <strong>FarOpt Solutions Lab</strong>
+                  <strong>Optimization Solutions Lab</strong>
                 </div>
               </div>
               <p>
@@ -142,32 +142,49 @@ class DetailsTable extends React.Component {
       <div >
         <div>
           <p>
-            The Amazon FarOpt Solutions Lab will help you get ready for FarOpt computing.
-            Amazon FarOpt Solutions Lab engagements are collaborative research programs that allow you to work with leading experts in FarOpt computing, machine learning, and high-performance computing. The programs help you research and identify the most promising applications of FarOpt computing for your business and get FarOpt ready. Amazon FarOpt Solution Lab experts will “work backwards” with you to dive deep and learn about the science of FarOpt computing, develop and benchmark new algorithms and solutions, and build the internal expertise and strategies required to prepare your organization for the future of FarOpt computing.
+            The Amazon Optimization Solutions Lab will help you get ready for FarOpt computing.
+            Amazon Optimization Solutions Lab engagements are collaborative research programs that allow you to work with leading experts in FarOpt computing, machine learning, and high-performance computing. The programs help you research and identify the most promising applications of FarOpt computing for your business and get FarOpt ready. AWS Optimize Solution Lab experts will “work backwards” with you to dive deep and learn about the science of FarOpt computing, develop and benchmark new algorithms and solutions, and build the internal expertise and strategies required to prepare your organization for the future of FarOpt computing.
 
           </p>
         </div>
       </div>
 
-      <h1>Benefits and features</h1>
+      
       <div className="awsui-util-container">
-      <div className="col-12 ">
-          <div className="col-4 ">
-            1
+      <h1>Benefits and features</h1>
+        <div className="awsui-util-container awsui-util-no-gutters">
+          <div>
+            <ColumnLayout columns={2} borders="vertical" className="awsui-util-no-gutters">
+              <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+                <div className="awsui-util-ph-l awsui-util-mb-m">
+                  <h3>Run Commerical Solvers at Scale</h3>
+                  <p>
+                    Configure and run commercial solvers without having to worry about provisioning underlying infrastructure and benefiting from pay as you go model.
+                  </p>
+                  <a href="javascript:void(0)">
+                    Learn more <Icon name="external" />
+                  </a>
+                </div>
+                <div className="awsui-util-ph-l awsui-util-mb-m">
+                  <h3>Create, Colloborate and Mainatin Solver Library</h3>
+                  <p>
+                    Use FarOpt to create new applications, collabarate with teams to create applications, enable role based access to applications and maintain 
+                    a library of resources and applications for faster analysis.
+                  </p>
+                  <a href="javascript:void(0)">
+                    Learn more <Icon name="external" />
+                  </a>
+                </div>
+              </div>
+            </ColumnLayout>
           </div>
-          <div className="col-4 ">
-            2
-          </div>
-          <div className="col-4 ">
-            3
-          </div>
-      </div>
+        </div>
         <div className="awsui-util-container-header">
           <h2>Build Expertise</h2>
         </div>
         <div>
           <p>
-          Amazon FarOpt Solutions Lab experts will impart knowledge and guide research so that you can build FarOpt skills, experience, and expertise. Our experts will work side-by-side with your team to dive deep into the most effective ways of using FarOpt computers, collaborate on experiments, and provide insights about existing FarOpt technology so that you are ready to deploy FarOpt solutions when the time is right.
+          AWS Optimize Solutions Lab experts will impart knowledge and guide research so that you can build FarOpt skills, experience, and expertise. Our experts will work side-by-side with your team to dive deep into the most effective ways of using FarOpt computers, collaborate on experiments, and provide insights about existing FarOpt technology so that you are ready to deploy FarOpt solutions when the time is right.
           </p>
         </div>
       </div>
@@ -239,7 +256,7 @@ const Tools = [
 const COLUMN_DEFINITIONS = [
   {
     id: 'id',
-    header: () => 'Reciepe ID',
+    header: () => 'Application ID',
     cell: item => (
       <div>
         <a href={`#/runs`}>{item.recipeid}</a>

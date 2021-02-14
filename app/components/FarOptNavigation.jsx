@@ -17,7 +17,7 @@ class ServiceNavigation extends React.Component {
   render() {
     return (
       <SideNavigation
-        header={{ text: 'Amazon FarOpt', href: '#/home' }}
+        header={{ text: 'AWS Optimmize', href: '#/home' }}
         items={[
           {
             type: 'section',

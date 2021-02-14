@@ -90,6 +90,22 @@ export default class CreateForm extends React.Component {
     super(props);
     this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
     this.state.isLoggedIn = false;
+    this.state = {
+      plainArray: ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
+      objectArray: [
+        { key: "Option 1", cat: "Group 1" },
+        { key: "Option 2", cat: "Group 1" },
+        { key: "Option 3", cat: "Group 1" },
+        { key: "Option 4", cat: "Group 2" },
+        { key: "Option 5", cat: "Group 2" },
+        { key: "Option 6", cat: "Group 2" },
+        { key: "Option 7", cat: "Group 2" }
+      ],
+      selectedValues: [
+        { key: "Option 1", cat: "Group 1" },
+        { key: "Option 2", cat: "Group 1" }
+      ]
+    };
   }
   componentDidMount() {
     let dataProvider = new DataProvider();
@@ -161,10 +177,12 @@ class ContentDeliveryPanel extends React.Component {
     this.maintainer =  "FarOpt";
     this.state = { deliveryMethod: 'script' };
     this.state = { secondContent: 'solverdefault' };
-    this.state = { desc: 'Provide a description for the recipe'};
+    this.state = { locationContent: 'google' };
+    this.state = { desc: 'Provide a description for the application'};
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSecondRadio = this.onSecondRadio.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleTemplateRun = this.handleTemplateRun.bind(this);
     this.handleRun = this.handleRun.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
@@ -225,6 +243,14 @@ class ContentDeliveryPanel extends React.Component {
     .then((data) => console.log('This is your data', data));
     window.location.href='/#/table'
     e.preventDefault();    
+  }
+
+  handleTemplateRun(e){ 
+
+    if(this.state.locationContent === undefined){
+      this.state.locationContent = 'routing'
+    }
+    
   }
 
   handleRun(e){ 
@@ -375,7 +401,7 @@ class ContentDeliveryPanel extends React.Component {
                      </div>
                      <div class="awsui-radio-button-content">
                         <div class="awsui-radio-button-label-text" awsui-radio-button-region="label"><span><span><span>Use a template</span></span></span></div>
-                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Use a FarOpt blueprint to quickly get started</span></span></span></div>
+                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Use a AWS Optimize blueprint to quickly get started</span></span></span></div>
                      </div>
                   </div>
                </div>
@@ -693,16 +719,17 @@ class ContentDeliveryPanel extends React.Component {
               ' Browse to a CSV file on S3 with a list of locations. The Row number is the ID of that location',
             content: () => 
               (<FormSection
-                header="S3 location"
+                header="S3 location" 
                 content={
                   <ColumnLayout>
                     <div data-awsui-column-layout-root="true">
                     <FormField
               label="Additional source code / inputs location"
                >
-              <Multiselect
+              <Input
                 placeholder="S3://Path/to/file.csv"
                 filteringType="auto"
+                
               />
             </FormField>
                     </div>
@@ -723,7 +750,7 @@ class ContentDeliveryPanel extends React.Component {
                   <FormField
             label="Additional source code / inputs location"
              >
-            <Multiselect
+            <Input
               placeholder="S3://Path/to/file.csv"
               filteringType="auto"
             />
@@ -752,6 +779,32 @@ class ContentDeliveryPanel extends React.Component {
             />
           </FormField>
                   </div>
+                  
+                </ColumnLayout>
+              }
+            />),
+            isOptional: true
+          },
+          {
+            title: 'Recommended Routing',
+            description:
+              ' Based on the route optimizer, below are the recommended routes for the vehicle(s)',
+            content: () => 
+            (<FormSection
+              header="S3 location"
+              content={
+                <ColumnLayout>
+                  <div data-awsui-column-layout-root="true">
+                    
+                  <FormField
+            label="Additional source code / inputs location"
+             >
+            <Multiselect
+              placeholder="S3://Path/to/file.csv"
+              filteringType="auto"
+            />
+          </FormField>
+                  </div>
                 </ColumnLayout>
               }
             />),
@@ -766,13 +819,20 @@ class ContentDeliveryPanel extends React.Component {
           cancelButton: 'Cancel',
           previousButton: 'Previous',
           nextButton: 'Next',
-          submitButton: 'Run Job',
+          submitButton: 'Save to template',
           optional: 'optional'
         }
       }></Wizard>
+ 
       </FormSection>
       
-      }{this.state.secondContent == 'solver1'  &&
+      }
+      {this.state.locationContent == 'routing'  &&
+        <FormSection header="Locations"> 
+        
+        </FormSection>
+      }
+      {this.state.secondContent == 'solver1'  &&
       <FormSection header="TO DO: Mock up of problem type 2">
       <ColumnLayout>
         <div data-awsui-column-layout-root={true}>
@@ -934,7 +994,7 @@ class ContentDeliveryPanel extends React.Component {
       </FormField>
 
 
-      <FormField><div><Button href="#" variant="primary" text="Run Job" /></div></FormField>  
+      <FormField><div><Button  variant="primary" text="Run Job"  onClick={this.handleTemplateRun} /></div></FormField>  
      
     </div>
   </ColumnLayout>
