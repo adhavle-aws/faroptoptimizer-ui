@@ -773,17 +773,16 @@ class ContentDeliveryPanel extends React.Component {
                   <FormField
             label="Additional source code / inputs location"
              >
-            <Multiselect
+            <Input
               placeholder="S3://Path/to/file.csv"
               filteringType="auto"
             />
           </FormField>
                   </div>
-                  
                 </ColumnLayout>
               }
             />),
-            isOptional: true
+            nextButton: false
           },
           {
             title: 'Recommended Routing',
@@ -791,24 +790,16 @@ class ContentDeliveryPanel extends React.Component {
               ' Based on the route optimizer, below are the recommended routes for the vehicle(s)',
             content: () => 
             (<FormSection
-              header="S3 location"
+              header="Recommended routes for vehicles"
               content={
                 <ColumnLayout>
                   <div data-awsui-column-layout-root="true">
-                    
-                  <FormField
-            label="Additional source code / inputs location"
-             >
-            <Multiselect
-              placeholder="S3://Path/to/file.csv"
-              filteringType="auto"
-            />
-          </FormField>
+                    <img src="/images/routing.png"/>
                   </div>
                 </ColumnLayout>
               }
             />),
-            isOptional: true
+            isOptional: false
           }
         ]
       } i18nStrings={
@@ -818,7 +809,7 @@ class ContentDeliveryPanel extends React.Component {
             `Step ${stepNumber} of ${stepsCount}`,
           cancelButton: 'Cancel',
           previousButton: 'Previous',
-          nextButton: 'Next',
+          nextButton: 'Load data and proceed',
           submitButton: 'Save to template',
           optional: 'optional'
         }
