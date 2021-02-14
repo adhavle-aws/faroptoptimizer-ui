@@ -36,11 +36,11 @@ const Breadcrumbs = () => (
   <BreadcrumbGroup
     items={[
       {
-        text: 'FarOpt',
+        text: 'AWS Optimize',
         href: '#/'
       },
       {
-        text: 'Script Library',
+        text: 'Application Library',
         href: '#/basic'
       }
     ]}

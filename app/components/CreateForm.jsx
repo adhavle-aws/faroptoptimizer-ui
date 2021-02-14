@@ -306,7 +306,7 @@ class ContentDeliveryPanel extends React.Component {
     }
     return (
       <div>
-      <FormSection header="Script creation options">
+      <FormSection header="Application creation options">
         <FormField
           label={
             <div>
@@ -1013,11 +1013,11 @@ const Breadcrumbs = () => (
   <BreadcrumbGroup
     items={[
       {
-        text: 'FarOpt',
+        text: 'AWS Optimize',
         href: '#/'
       },
       {
-        text: 'Create Script',
+        text: 'Create Application',
         href: '#/create'
       }
     ]}
