@@ -96,7 +96,7 @@ const CustomNavigation = () => (
         items: [
           { type: 'link', text: 'What is FarOpt', href: '#/' },
           { type: 'link', text: 'Optimizer Library', href: '#/basic' },
-          { type: 'link', text: 'Create Script', href: '#/service-home' },
+          { type: 'link', text: 'Create Application', href: '#/service-home' },
           { type: 'link', text: 'Define Workflow', href: '#/create' },
           { type: 'link', text: 'Table view', href: '#/table' }
         ]

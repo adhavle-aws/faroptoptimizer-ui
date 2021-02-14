@@ -156,7 +156,7 @@ function handleRun(e){
 const Content = props => (
   <div style={{width:120 + "%"}}>
     <Form
-      header={<h1>Create Script</h1>}
+      header={<h1>Create Application</h1>}
       actions={
         // located at the bottom of the form
         <div></div>
@@ -310,7 +310,7 @@ class ContentDeliveryPanel extends React.Component {
         <FormField
           label={
             <div>
-              Create Script Sources
+              Create Application Sources
               <a
                 className="awsui-util-help-info-link"
                 href="javascript:void(0);"

@@ -24,7 +24,7 @@ class ServiceNavigation extends React.Component {
             expanded: true,
             items: [
           { type: 'link', text: 'What is AWS Optimize', href: '#/' },
-          { type: 'link', text: 'Create Script', href: '#/create' },
+          { type: 'link', text: 'Create Application', href: '#/create' },
           { type: 'link', text: 'CloudWatch', href: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1' },
         ]
       }

@@ -27,7 +27,7 @@ class ServiceNavigation extends React.Component {
           { type: 'link', text: 'What is FarOpt', href: '#/home' },
           { type: 'link', text: 'Solvers', href: '#/cards' },
           { type: 'link', text: 'Optimizer Library', href: '#/table' },
-          { type: 'link', text: 'Create Script', href: '#/create' },
+          { type: 'link', text: 'Create Application', href: '#/create' },
           { type: 'link', text: 'Job Run History', href: '#/runs/id=' },
           { type: 'link', text: 'Faropt Solutions Lab', href: '#/farOptSol' },
           
