@@ -359,7 +359,7 @@ class ContentDeliveryPanel extends React.Component {
                      </div>
                      <div class="awsui-radio-button-content">
                         <div class="awsui-radio-button-label-text" awsui-radio-button-region="label"><span><span><span>Git repository</span></span></span></div>
-                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Run script from git repo (note : ... )</span></span></span></div>
+                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Run script from git repo  </span></span></span></div>
                      </div>
                   </div>
                </div>
@@ -794,7 +794,7 @@ class ContentDeliveryPanel extends React.Component {
               content={
                 <ColumnLayout>
                   <div data-awsui-column-layout-root="true">
-                    <img src="/images/routing.png"/>
+                    <img loading="lazy" src="/images/routing.png"/>
                   </div>
                 </ColumnLayout>
               }
