@@ -15,6 +15,8 @@ import FarOptNavigation from './FarOptNavigation.jsx';
 const {
   AppLayout,
   BreadcrumbGroup,
+  ColumnLayout,
+  Icon,
   Button,
   Flash,
   Table,

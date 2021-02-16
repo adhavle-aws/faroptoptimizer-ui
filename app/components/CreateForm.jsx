@@ -359,7 +359,7 @@ class ContentDeliveryPanel extends React.Component {
                      </div>
                      <div class="awsui-radio-button-content">
                         <div class="awsui-radio-button-label-text" awsui-radio-button-region="label"><span><span><span>Git repository</span></span></span></div>
-                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Run script from git repo  </span></span></span></div>
+                        <div class="awsui-radio-button-description" awsui-radio-button-region="description"><span><span><span>Run script from git repo </span></span></span></div>
                      </div>
                   </div>
                </div>
