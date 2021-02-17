@@ -38,10 +38,10 @@ export default class MyCards extends React.Component {
                 <div>
                   <strong>FarOpt</strong>
                 </div>
-                <div>Commerical Solvers on AWS</div>
+                <div>Commercial Solvers on AWS</div>
               </div>
               <p>
-                Run Commerical Solvers with agility &amp; self service capabilities in a cost efficient manner.  
+                Run Commercial Solvers with agility &amp; self service capabilities in a cost efficient manner.  
               </p>
             </div>
           </div>

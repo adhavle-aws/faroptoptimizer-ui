@@ -119,7 +119,7 @@ const Content = () => (
             <ColumnLayout columns={2} borders="vertical" className="awsui-util-no-gutters">
               <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
                 <div className="awsui-util-ph-l awsui-util-mb-m">
-                  <h3>Run Commerical Solvers at Scale</h3>
+                  <h3>Run Commercial Solvers at Scale</h3>
                   <p>
                     Configure and run commercial solvers without having to worry about provisioning underlying infrastructure and benefiting from pay as you go model.
                   </p>

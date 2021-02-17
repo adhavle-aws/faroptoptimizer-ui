@@ -73,7 +73,7 @@ const Content = () => (
       <h1>Benefits and features</h1>
       <div className="awsui-util-container">
         <div className="awsui-util-container-header">
-          <h2>Commerical and OSS Solvers</h2>
+          <h2>Commercial and OSS Solvers</h2>
         </div>
         <div>
           <h4>
