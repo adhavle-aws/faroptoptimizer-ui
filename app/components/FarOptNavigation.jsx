@@ -24,12 +24,12 @@ class ServiceNavigation extends React.Component {
             text: 'Components',
             expanded: true,
             items: [
-          { type: 'link', text: 'What is FarOpt', href: '#/home' },
+          { type: 'link', text: 'What is AWS Optimize', href: '#/home' },
           { type: 'link', text: 'Solvers', href: '#/cards' },
           { type: 'link', text: 'Optimizer Library', href: '#/table' },
           { type: 'link', text: 'Create Application', href: '#/create' },
           { type: 'link', text: 'Job Run History', href: '#/runs/id=' },
-          { type: 'link', text: 'Faropt Solutions Lab', href: '#/farOptSol' },
+          { type: 'link', text: 'Optimize Solutions Lab', href: '#/farOptSol' },
           
           { type: 'link', text: 'Logout', href: '#/' }
         ]
